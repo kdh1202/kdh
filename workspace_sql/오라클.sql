@@ -73,12 +73,13 @@ select * from emp where deptno = 30 or job = 'CLERK';
 /*
 job이 CLERK sal이 2000초과 이거나 deptno 10인 사원 조회
 */
-select * from emp where (job = 'CLERK' or sal > 2000) and deptno =10;
-
-select * from emp where job = 'CLERK' or sal > 2000 and deptno =10;
-
-select * from emp where job = 'CLERK' or (sal > 2000 and deptno=10);
-
+select * from emp where (job = 'CLERK' or sal > 2000) and deptno = 20;
+/*
+select * from emp where job = 'CLERK' or/ sal > 2000 and deptno = 10/;
+select * from wmp where job = 'CLERK' or sal > 2000 and deptno = 10 ;
+  위에 두개는 같다 2개
+select * from emp where job = 'CLERK' or (sal > 2000 and deptno = 10 );
+*/
 -- ()먼저 실행해야 한는 것을 묶어 주는게 편함
 
 select * from emp where not (job = 'CLERK' or ( sal > 2000 and deptno = 10 ) );
@@ -137,4 +138,45 @@ select * from emp where job != 'SALESMAN' and job not in ('MANAGER', 'CLERK',
 select * from emp where sal >= 1000 and sal <= 3000;
 
 select * from emp where mgr > 7600 and mgr < 7900;
+
+
+-- 월급 3000만원이상 사원을 찾고  30 인사람을 찾으시오
+select * from emp where sal >= 3000 and deptno = 20;
+
+-- 입사일  81년 1월1일 이후입사한사람 찾으시오
+select * from emp where  hiredate > '81/01/01';
+
+select * from emp where (sal >= 3000) and hiredate >= '81/01/01';
+
+-- 입사날짜가 87년이전이고   1600이하 직원들의 이름과 입사날짜를 조회하세요
+select * from emp where hiredate < '87/01/01' and sal < 1600;
+
+--추가수당이 100만원 이상 사람과 사원번호30인 사람
+
+select * from emp where comm >= 100 and deptno = 30;
+;
+--추가수당이  눌인 사람과 empno 7700이상인사람
+select * from emp order by deptno desc;
+
+-- where과 order by 같이 있을떄 where 먼저 사용후 order by
+
+select * from emp where deptno = 30 order by ename desc;
+
+--일이 clerk거나  월급이 2000초과 면서  deptno가 10인 사원을조회
+
+select * from emp where job = 'CLERK' or (sal > 2000 and deptno = 10);
+
+select * from emp where (job = 'CLERK' or sal > 2000) and deptno = 10;
+
+select * from emp where job = 'CLERK' or sal > 2000 and deptno = 10;
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
