@@ -301,7 +301,6 @@ where ename like '%E%' and  (sal < 1000 or sal > 2000) and deptno = 30;
 
 
 
-
 -- 추가 수당이없고 상급자가 있고 직책이 매니저 크래크인사원중 사원이름의 두글자가 
 -- L이 아닌 사원의 정보를 출력하는 sql 구문
 
@@ -333,9 +332,6 @@ select job, length( job) from emp;
 
 
 
-
-
-
 --글자의 갯수를 찾아주는 방법
 select * from emp where length(ename) = 5;
 select * from emp where length(job) = 7;
@@ -349,7 +345,6 @@ select * from emp where length(sal) = 4;
 -- 1 gbyte : 1024 mbyte
 -- 1 tbyte : 1024 gbyte
 
-
 --MPNO    NOT NULL NUMBER(4)    4자리
 --ENAME             VARCHAR2(10) 한글은 3글자 
 --JOB               VARCHAR2(9)  
@@ -359,12 +354,9 @@ select * from emp where length(sal) = 4;
 --COMM              NUMBER(7,2)  
 --DEPTNO            NUMBER(2)    
 
-
 select lengthb ('a'), lengthb('한') from dual;
 
 desc emp;
-
-
 
 -- 수업잘듣기 
 -- 따라쓰기 
@@ -372,12 +364,6 @@ desc emp;
 -- 안보고 다시쓰기 
 -- 응용 몇개라도 바꿔보기
 -- 자랑 해라
-
-
-
-
-
-
 
 -- 사원이름이 s 로 끝나는 데이터를모두 출력
 
@@ -449,23 +435,6 @@ select ename from emp
 where lower(ename) like lower('%aM%');
 
 
-\
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 
 emp 테이블에서 급여가 3000이상이고 잡이 샐러리맨인 직원의 이름과 급여를 조회하세요
 */
@@ -534,7 +503,7 @@ select ename, length(ename) from emp
 order by  length(ename) desc; 
 
 
-select length('잭스 바이트수'), lengthb('afk바이트수')
+select length('잭스'), lengthb('잭스')
 from dual;
 
 
