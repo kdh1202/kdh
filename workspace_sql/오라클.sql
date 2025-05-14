@@ -171,12 +171,371 @@ select * from emp where (job = 'CLERK' or sal > 2000) and deptno = 10;
 select * from emp where job = 'CLERK' or sal > 2000 and deptno = 10;
 
 
+select * from emp order by ename;
  
+--1. 부서번호10번인 사람들을 출력
+select * from emp where deptno = 10;
+--2. 부서번호 10번이 아닌사람들을 출력
+select * from emp where deptno <> 10;
+--3. 급여가 3000이상인 사람들을 출력
+select * from emp where sal >= 3000;
+--4. 급여가 1500~3000 사이포함의 사람을 출력
+select * from emp where sal >= 1500 and sal <= 3000;
+--5. 부서 번호 10번인 사람중 급여 2000이상인 사람을 출력
+select * from emp where deptno = 10 and sal >= 2000;
+--6 부서번호 30번중  1500~3000 사이 미포함인 사람을 출력
+select * from emp where deptno = 30 and sal > 1500 and sal < 3000; 
+--7 부서번호 30번중 1500~3000 사이 미포함 인 사람을 연봉이 작은순으로 출력 연봉이 같은경우 이름이 빠른순으로 출력
+select * from emp where deptno = 30 and sal >1500 and sal < 3000 order by sal, ename;
+--8 부서번호 20.30번중 1500~3000 사이 (미포함)인 사람을 연봉이 작은순으로출력, 연봉이 같은경우 이름이 빠른순으로 출력
+select * from emp where deptno in ( 20, 30) and sal > 1500 and sal < 3000
+order by sal,ename;
+--9 부서번호가 20또는 30이고 급여가1500 이상인 직원의 이름과 급여를 급여 오름차순으로 출력
+select ename, sal from emp where( deptno = 20 or deptno = 30) and sal >= 1500 order by
+sal;
+--  9번 내용 잘보기
+-- where 절만 잘해도 편하다
+-- go to the hell 
  
+select * from emp
+where sal between 2000 and 3000 and deptno = 20;
  
- 
- 
- 
- 
- 
+select * from emp 
+where sal not between 2000 and 3000;
+
+--select * from emp 
+--where sal between 2000 and 3000
+--and sal != 2000  
+--and sal != 3000;
+ -- 2000초과 3000미만 비트윈으로 표시할떄 쓸수있는 방법,
+
+
+--       like = xx 처럼 
+--      % = 와일드 카드
+--      시물레이션 돌리는거 엄청 중요함
+--      _ = 한글자로 인식
+select * from emp
+where ename like 'S%';
+
+-- 첫번쨰 글자는 상관없음  ( _ )
+-- 두번쨰 무조건 L인것만 
+-- 그 이후는 상관없음 ( % )
+select *from emp where
+ename  like '_L%';
+
+-- %%안에 포함된 사원 출력할떄 
+select *from emp where
+ename  like '%AM%_';
+
+select *from emp where
+ename  like '%A%';
+
+select *from emp where
+ename  not like '%A%' and ename  like '%S%'; 
+
+select * from emp
+where ename like 'S___H';
+
+select comm from emp;
+
+--null 은 계산이 안됨
+--null 값이 없는 상태를 뜻한다 
+--연산이 안되서 빠진다 들어갈수가 없다
+
+select comm from emp
+where comm > 400;
+
+select * from emp
+where comm is null;
+
+select * from emp
+where comm is not null;
+
+select ename , sal,sal*12+comm as ANNSAL, comm from emp;
+
+select * from emp
+where comm = 0;
+
+
+select * from emp where deptno = 10; 
+select * from emp where deptno = 20;
+
+--union
+-- union  앞에있는 조회 쿼리(sql) 결과뒤에 있는 조회 쿼리 결과를 위 아래로 합쳐줌
+--중복 되는 줄은 한번만 나온다
+
+select * from emp where deptno = 10
+union 
+select * from emp where deptno = 10;
+
+--union all
+--union all은 더 사용한다
+--union all 출력데이터가 같을떄 사용한다
+-- 둘다 조회 하는 컬럼의수 , 컬럽의 타입이 같아야실행된다.
+
+
+select * from emp where deptno = 10
+union all
+select * from emp where deptno = 10;
+
+
+-- 글자와 숫자는 같을수없다 참인것만 가능하다
+-- 숫자 + 숫자 o 글자 + 글자 0 
+-- 숫자 + 글자 x 글자 + 숫자 x
+
+select empno from emp
+union all
+select sal from emp;
+
+select empno from emp
+union all
+select ename from emp;
+
+
+-- Q5
+-- 이름  사월번호 월급 부서번호
+--
+
+select ename, empno, sal, deptno from emp
+where ename like '%E%' and  (sal < 1000 or sal > 2000) and deptno = 30;
+
+
+
+
+-- 추가 수당이없고 상급자가 있고 직책이 매니저 크래크인사원중 사원이름의 두글자가 
+-- L이 아닌 사원의 정보를 출력하는 sql 구문
+
+
+select * from emp where job in ('MANAGER', 'CLERK')
+and  ename not like '_L%' and comm is null and mgr is not null;
+
+-- q2
+select empno, ename, job, sal, deptno from emp where job = 'SALESMAN';
+
+
+select ename, upper(ename), lower(ename), initcap (ename) from emp;
+
+select job,lower(job) from emp;
+
+select initcap(ename) from emp
+where lower(ename) like lower('%aM%');
+
+-- 연습
+select upper('aB'), lower('aB') from dual;
+
+
+-- 컬럼의 문자 개수를 알려줌
+select ename, length(ename) from emp;
+
+
+select job, length( job) from emp;
+
+
+
+
+
+
+
+--글자의 갯수를 찾아주는 방법
+select * from emp where length(ename) = 5;
+select * from emp where length(job) = 7;
+
+select * from emp where length(sal) = 4;
+
+-- bit : 0또는 1( 참 or 거짓)
+-- 1 Byte : 8bit 글씨하나를 저장하는 공간 (영어)
+-- 1 kByte : 1024 Byte
+-- 1 mbyte : 1024 kbyte
+-- 1 gbyte : 1024 mbyte
+-- 1 tbyte : 1024 gbyte
+
+
+--MPNO    NOT NULL NUMBER(4)    4자리
+--ENAME             VARCHAR2(10) 한글은 3글자 
+--JOB               VARCHAR2(9)  
+--MGR               NUMBER(4)    
+--HIREDATE          DATE         
+--SAL               NUMBER(7,2)  
+--COMM              NUMBER(7,2)  
+--DEPTNO            NUMBER(2)    
+
+
+select lengthb ('a'), lengthb('한') from dual;
+
+desc emp;
+
+
+
+-- 수업잘듣기 
+-- 따라쓰기 
+-- 분석(이해)
+-- 안보고 다시쓰기 
+-- 응용 몇개라도 바꿔보기
+-- 자랑 해라
+
+
+
+
+
+
+
+-- 사원이름이 s 로 끝나는 데이터를모두 출력
+
+select * from emp
+where ename like '%_S';
+
+-- 30번 부서에서 직책이 세일즈맨 
+--  EMP 테이블 에서 사원 번호 이름 직책 급여 부서 번호 출력
+
+select  empno, ename, job, sal, deptno from emp
+where deptno = 30 and joB = 'SALESMAN';
+
+--emp 테이블 20,30번 에서 근무 하는 사원중
+--급여가 2000초과 사원을  사원번호 이름 직책 급여 부서번호 출력
+
+
+select empno, ename, job, sal, deptno from emp
+where sal > 2000 and deptno in ( 20, 30);
+
+-- 급여  2000이상 3000이하의 이외의 범위값을 비트윈x 
+
+
+select * from emp
+where sal < 2000 or sal > 3000;
+
+--사원이름에 E 가 포함된 30번 부서 ,급여가 1000~2000 사이가 x 
+-- 사원 이름 번호 급여 부서 번호 를 출력
+
+
+select ename, empno, sal, deptno from emp
+where deptno = 30 and  (sal < 1000 or sal > 2000)
+and  ename like '%E%';
+
+-- 직책이 MANAGER,CLERK 사원중 추가 수당X 상급자가 있고
+-- 이름두번쨰글자가 L이 아닌사원의 정보를 출력
+
+select * from emp
+where comm is null and ename not like ('_L%')
+and job in ('MANAGER', 'CLERK') ;
+
+
+select * from emp
+where comm is null and ename not like ('_L%')
+and job = 'MANAGER' or job ='CLERK';
+
+select * from emp 
+where length(ename) = 5;
+
+
+--비트윈
+select * from emp
+where not sal between 2000 and 3000;
+
+select ^ from emp
+where ename not like ('_E%');
+
+
+select empno, ename, sal, deptno from emp
+where deptno = 10
+union
+select sal, job, deptno, sal from emp
+where deptno = 20;
+
+
+select upper(ename) from emp
+where lower(ename) like lower('%aM%');
+
+select ename from emp
+where lower(ename) like lower('%aM%');
+
+
+\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+emp 테이블에서 급여가 3000이상이고 잡이 샐러리맨인 직원의 이름과 급여를 조회하세요
+*/
+
+select ename, sal from emp
+where sal > 3000 and job ='SALESMAN';
+
+/* 
+emp 테이블에서 추가수당이 null인 직원의 첫글자가 A가 들어가는 샐러리맨을 조회 하세요 
+*/
+
+select * from emp
+where comm is null and ename like ('A%') and job = 'SALESMAN' ;
+
+
+/* 
+emp 테이블에서 부서번호 20 , 30 이고 마지막ㅇ이름에 a 가들어가며 급여가 3000이상인
+직원의 사원번호 직속상관의 사원번호 입사일 추가수당 나오게 만들어라
+*/
+
+
+select ename, sal, empno, mgr, hiredate, deptno, comm from emp
+where deptno in (20, 30)
+and ename like ('%T')
+and sal >= 3000;
+
+
+select * from emp;
+
+
+
+--- 테이블에서  이름이 5글자인 사람을 이름
+
+select ename, length(ename) from emp
+where length(ename) = 5 ; 
+
+
+--job이 8글자인 사람을 이름만 나오게 
+
+select ename from emp
+where length(job) = 8;
+
+select ename from emp
+where length(job) = 8;
+
+
+--각 사원의 이름(ENAME)과 그 이름의 길이를 출력하세요
+select ename, length(ename) from emp
+where length(ename) > 1;
+--가장 긴 이름을 가진 사원 찾기
+--가장 이름이 긴 사원의 이름과 사원 번호를 출력하세요.
+select length(ename), ename, empno from emp
+where length(ename) = 6;  
+
+--이름 길이가 5 이상인 사원 찾기
+--이름의 길이가 5자 이상인 사원의 이름과 직업을 출력하세요.
+select length(ename), ename, job from emp
+where length(ename) >= 5;
+
+
+--2.이름 길이 기준 정렬
+--모든 사원의 이름과 이름 길이를 출력하되, 이름 길이 순으로 내림차순 정렬하세요.
+
+
+select ename, length(ename) from emp
+order by  length(ename) desc; 
+
+
+select length('잭스 바이트수'), lengthb('afk바이트수')
+from dual;
+
+
 
