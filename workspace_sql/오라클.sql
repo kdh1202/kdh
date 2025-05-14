@@ -503,7 +503,7 @@ select ename, length(ename) from emp
 order by  length(ename) desc; 
 
 
-select length('잭스'), lengthb('잭스')
+select length('한글'), lengthb('한글')
 from dual;
 
 
