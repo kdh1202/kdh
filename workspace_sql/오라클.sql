@@ -195,7 +195,6 @@ select ename, sal from emp where( deptno = 20 or deptno = 30) and sal >= 1500 or
 sal;
 --  9번 내용 잘보기
 -- where 절만 잘해도 편하다
--- go to the hell 
  
 select * from emp
 where sal between 2000 and 3000 and deptno = 20;
@@ -294,7 +293,28 @@ select ename from emp;
 
 -- Q5
 -- 이름  사월번호 월급 부서번호
---
+--  부서 10번 사원번호 내림차순으로  정렬하여 출력
+-- 부서 20번을 사원번호 오름차순으로 출력
+
+select * from emp
+where deptno = 10 order by empno desc
+union all
+select * from emp
+where deptno = 20 order by empno;
+
+
+--  아직 안배운 기술로 order by 안됨
+select * from (
+where deptno = 10 
+union all
+select * from emp
+where deptno = 20 order by empno;
+
+ 
+
+
+
+
 
 select ename, empno, sal, deptno from emp
 where ename like '%E%' and  (sal < 1000 or sal > 2000) and deptno = 30;
@@ -303,6 +323,24 @@ where ename like '%E%' and  (sal < 1000 or sal > 2000) and deptno = 30;
 
 -- 추가 수당이없고 상급자가 있고 직책이 매니저 크래크인사원중 사원이름의 두글자가 
 -- L이 아닌 사원의 정보를 출력하는 sql 구문
+
+
+
+select * from emp
+where (job = 'CLERK' or job = 'MANAGER') and  ename not like '_L%'
+and comm is null;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 select * from emp where job in ('MANAGER', 'CLERK')
@@ -333,7 +371,7 @@ select job, length( job) from emp;
 
 
 --글자의 갯수를 찾아주는 방법
-select * from emp where length(ename) = 5;
+select * from emp where length(ename) = 5; -- 5개인 문자의 갯수를 찾아줌
 select * from emp where length(job) = 7;
 
 select * from emp where length(sal) = 4;
@@ -366,6 +404,50 @@ desc emp;
 -- 자랑 해라
 
 -- 사원이름이 s 로 끝나는 데이터를모두 출력
+
+select ename from emp
+where ename like '%S';
+
+
+
+-- 30번 부서에서 직책이 세일즈맨 
+
+select deptno, job from emp
+where deptno = 30 and job = 'SALESMAN';
+
+
+
+--  EMP 테이블 에서 사원 번호 이름 직책 급여 부서 번호 출력
+
+select empno, ename, job, sal, deptno from emp;
+
+-- 급여  2000이상 3000이하의 이외의 범위값을 비트윈x 
+
+select * from emp
+where not sal between 2000 and 3000;
+
+--사원이름에 E 가 포함된 30번 부서 ,급여가 1000~2000 사이가 x 
+-- 사원 이름 번호 급여 부서 번호 를 출력
+select ename, empno, sal, deptno from emp
+where ename like '%E%' and deptno = 30 and 
+sal >= 1000 and  sal <= 2000 ;
+
+
+-- 직책이 MANAGER,CLERK 사원중 추가 수당X 상급자가 있고
+-- 이름두번쨰글자가 L이 아닌사원의 정보를 출력
+
+select * from emp
+where (job = 'MANAGER' or job ='CLERK') and comm is null and
+ename not like '_L%';
+
+
+
+
+
+
+
+
+
 
 select * from emp
 where ename like '%_S';
@@ -499,12 +581,386 @@ where length(ename) >= 5;
 --모든 사원의 이름과 이름 길이를 출력하되, 이름 길이 순으로 내림차순 정렬하세요.
 
 
+select ename,length(ename) from emp
+order by length(ename) desc;
+
+
+
+
+
+
+
+
+
 select ename, length(ename) from emp
 order by  length(ename) desc; 
 
 
 select length('한글'), lengthb('한글')
 from dual;
+
+select ename from emp
+where length(ename) >= 3;
+
+select job, substr(job, 1, 2), substr(job, 3, 2),substr(job, 5) from emp;
+
+
+-- 사원이름 2번쨰 ~ 3글자만 출력
+
+select ename, substr(ename, 2, 3) from emp;
+select ename, substr(ename, 2, 30) from emp;
+select ename, substr(ename, 20, 300) from emp;  
+-- 실제 글씨 길이가 넘어가면 null 이나온다
+
+--음수도 가능 
+select job, substr(job, -3, 2) from emp;
+select job, substr(job, -30, 2) from emp;
+-- 실제 글씨 길이가 넘어가면 null 이나온다
+
+
+-- 이름의 뒤에서 3글자만 모두 출려하기
+
+select substr(ename, -3,3) from emp;
+select substr(ename, -3) from emp;
+
+select job, substr(job, -length(job), 2) from emp; 
+
+--
+
+select '010-1234-5678' as replace_before, 
+replace('010-1234-5678', '-',' ') as replace_1,
+replace('010-1234-5678', '-') as replace_2
+from dual;
+
+
+-- ename에 있는 E를 '-'로 교체
+
+
+select ename, replace(ename, 'A', '-')
+from emp;
+
+
+
+
+
+select job,replace(job,'S','*') from emp;
+select job as before,
+replace(job, 'S', '2') as from emp;
+
+select job,replace(job, 'E', '12') from emp; 
+
+
+-- lpad, rpad = 모자르면 채우고 넘어가면 자른다
+select lpad(ename,' 5', '+') from emp;
+select lpad(ename,6,'*') from emp;
+select substr(ename,'1','2',rpad('6','*')) from emp; 
+
+
+-- ename의 전체글자6개  앞에 2글자 보이게
+
+select ename, substr(ename,'1','2') from emp;
+
+select ename from emp;
+-- 이네임의 전체글자6개  앞에 두글자만 보이게 
+
+select substr(ename,'1','2') from emp;
+
+-- 문제2
+-- 앞에 두글자만 원본을 출력하고 나머지는 4개의 로 표시
+
+select rpad(substr(ename,'1','2'),'6','*')from emp;
+-- why?  
+-- rpad = 오늘쪽부터 남은공간을 채우는 방법
+-- lpad =
+
+
+select rpad(ename,'6','*') from emp;
+
+select substr(ename,'1','2') from emp;
+
+
+
+select substr(ename,'1','2', rpad(ename,'6','*') )
+from emp;
+
+select rpad(ename,'6','*', substr(ename)) from emp;
+
+select ename from emp;
+
+
+-- 문제2
+-- 앞에 두글자만 원본을 출력하고 나머지는 4개의 로 표시
+
+select rpad(ename,2) from emp;
+
+-- 문제3
+-- 사원 이름 두글자만 보이고 나머지는로. 단, 원래 이름 길이 만큼 표시
+-- 예 : WA, SM*
+
+select ename,;
+
+--심화  이름을 총 20자 중  가운데 정렬
+
+
+
+
+
+
+
+
+
+--  \ 를 시프트 사용하면 나옴  | 파이프 라고함
+-- || 앞의 문자와 뒤의 문자를 합치는 연산자
+
+select ename || empno from emp;
+
+select 'ab'||'da'||'e' from dual;
+
+
+select empno ||  ' : '  || ename from emp;
+
+
+
+--TEIM 앞위의 공백을 자른다
+-- 문자 사이의 공백은 건드리지 않는다 
+select '    ab  b    ', trim('    ab  b    ') from dual;
+
+
+-- round 사용 방법
+select 
+   round (14.46, 0),-- 하나만 입력하면 소수점 첫째자리 반올림
+   round (14.46, 1), -- 소수점 두번째 자리
+   round (14.46, -1) --음수 일떄 정수 부터 시작한다 .
+from dual;
+
+
+select 
+    trunc(14.46),
+    trunc(14.46,1),
+    trunc(14.46,-1),
+    trunc(-14.46)
+from dual;
+
+
+select ceil(12.23) from dual;
+
+select 
+  ceil(3.14), -- 올림
+  floor(3.14), -- 내림
+  ceil(-3.14), --
+  floor(-3.14)
+  from dual;
+
+select trunc(-3.14) from dual;
+select trunc (12314.231231) from dual;
+
+select
+    mod(15, 6),
+    mod(15, 4)
+from dual;
+
+select  7/3 from dual;
+select  7/0 from dual;
+
+
+-- 나머지  
+select mod (7,3) from dual;
+select mod (8,3) from dual;
+select mod (9,3) from dual;
+
+
+
+ select sysdate from dual;
+
+
+
+
+
+
+select empno +'1000' from emp;
+select empno,empno + 1000 from emp;
+select empno , empno 'asdf' from emp; -- 
+select 'a' +'b' from dual;
+select 'a'||'b' from emp;
+select sysdate to_char from emp;
+
+
+
+select to_char(sysdate) from emp;
+
+
+
+select to_char(sysdate,'yyyy/mm/dd hh24:mi:ss') "england"from dual;
+
+select to_char(hiredate, 'yyyy/mm/dd/ hh24:mi:ss') from emp;
+
+select sysdate from dual;
+
+select to_date('2025-05-15', 'yyyy-mm-dd') - to_date('1995-12-02', 'yyyy-mm-dd') from dual;
+
+select * from emp;
+
+--정석 
+select * from emp
+where hiredate > to_date('1981-12-04','yyyy-mm-dd');
+
+
+select sal*12 + comm from emp;
+
+select sal*12 + comm,  
+    sal*12+nvl(comm,0)
+    from emp;
+
+--select from 
+--where 
+--substr
+--sysdate 
+--to_char
+--legnth
+--replace
+--like
+--nvl
+--nvl2
+--lpad
+--rpad 
+--trim
+--||
+--ceil
+--floor
+--mod
+--round
+--trunc
+--upper
+--lower
+--union
+--union all
+--and, or 
+
+
+
+
+
+
+-- 문제2
+-- 앞에 두글자만 원본을 출력하고 나머지는 4개의 로 표시
+
+select  ename,substr(ename,1,2
+)
+    from emp;
+
+select lpad(ename,6,'*',substr(ename,1,6))
+from emp;
+
+select ename,lpad(ename,6,'*') from emp;
+
+select rpad(ename,6,'*',substr(ename,1,2)) from emp;
+substr(ename,1,2)
+
+
+-- 문제3
+-- 사원 이름 두글자만 보이고 나머지는로. 단, 원래 이름 길이 만큼 표시
+-- 예 : WA, SM*
+
+select rpad(substr(ename,1,2),6,'*') from emp;
+--   오른쪽부터 (이름 첫번쨰부터두글자뺴고 )6글자중 빈공간에 *표시를 해라
+select rpad(ename,6,'*') from emp;
+-- 6글자 가안되는곳에 *를 채워라
+select substr(ename,1,3) from emp;
+-- e name중 첫번쨰부터 3글자만 써라
+
+
+select rpad(substr(ename,1,2),6,'*') from emp;
+
+
+
+
+-- 사원 이름 두글자만 보이고 나머지는로. 단, 원래 이름 길이 만큼 표시
+-- 예 : WA, SM*
+
+select 
+    ename,
+    rpad(substr(ename,1,2),length(ename),'*')
+    from emp;
+
+-- 문제2
+-- 앞에 두글자만 원본을 출력하고 나머지는 4개의 로 표시
+
+select rpad(substr(ename,1,2),6,'*') from emp;
+
+
+select 
+    job,
+    rpad(substr(job,1,2),length(job),'*')
+    from emp;
+
+
+
+
+--심화  
+-- 잡을 총 20자중 가운데정렬
+select job from emp;
+select en from emp;
+
+
+
+
+
+
+--문제 1: 이름에서 'A'를 '*'로 대체하기
+
+
+select ename,replace(ename,'A','*') from emp;
+
+
+
+select '010-8120-0864',replace('010-8120-0864','-',' ')
+from dual;
+
+
+
+
+
+
+--3.이메일에서 도메인 부분만 추출하기
+-- 문제: email 컬럼에서 이메일 도메인 부분만 추출하세요. 예를 들어, 
+--'john.doe@example.com'은 'example.com'으로 바꿔야 합니다
+
+select 
+substr('john.doe@example.com',10,100)
+"email" from dual;
+
+
+select round(123.15),r from emp;
+
+
+--salary 컬럼에서 소수 첫째 자리까지 반올림하세요
+
+select empno from emp;
+
+
+--1234.5678 
+select round (1234.5678,2)from emp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT ROUND(1234.5678, 2) AS result FROM dual;
+
+select ename trim(ename,'A','A') from emp;
+
+
+
+
 
 
 
