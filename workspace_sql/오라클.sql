@@ -941,26 +941,418 @@ select empno from emp;
 --1234.5678 
 select round (1234.5678,2)from emp;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 SELECT ROUND(1234.5678, 2) AS result FROM dual;
 
 select ename trim(ename,'A','A') from emp;
 
 
+--각 사원의 연봉을 출력
+--월글 * 12+comm
+--이름과 토탈 페이로 출력
+
+
+select sal*12,ename,
+sal*12+nvl(comm,0) total_pay
+from emp;
+
+
+select  ename,sal*12, sal*12+nvl(comm,0) total_pay from emp;
+-- [] 대괄호
+-- {} 중괄호
+-- () 소괄호
+
+select empno,ename, job, sal, decode
+(job,
+'MANAGER',sal*1.1,
+'SALESMAN',sal*1.5,
+'ANLYST',sal,sal*1.03) as upsal from emp;
+
+select job,sal,
+    case job
+    when 'MANAGER' then sal*1.1
+    when 'SALESMAN' then sal*1.05
+    when 'ANALYST' then sal
+    else sal*1.03
+    end  as upsal from emp;
+
+-- nvl 사용 하지않고 디ㅣ코드로 케이스로 nvl 동일한 결과 출력하기
+
+select nvl(comm,-1) from emp;
+
+
+select comm,
+    decode
+    (comm,
+    null,-1 
+) from emp;    
+
+
+
+select empno, ename, comm,
+    case
+    when comm is null then '해당사항없음'
+    when comm = 0 then '수당없음'
+    when comm > 0 then '수당 : '|| comm
+    end as case from emp;
 
 
 
 
 
+-- 사원이름이 5글자 이상 6글자 미만 사원정보 출력
+-- masking empno 열에는 앞두자리 외 뒬자리를 *로 출력 ㅇ 
+--masking name열에는 사원이 첫글자만 보여주고 나머지 자수는 * 출력
+
+select empno, ename, rpad(substr(empno,1,2),length(empno),'*') MASKING_EMPNO,
+rpad(substr(ename,1,1),length(ename),'*') MASKING_ENAME
+from emp
+where length(ename) >= 5 and length(ename) < 6 ;
+
+
+
+--사원의 월 평균 근무일 21.5, 하루근무시간 8시간 
+-- 하루 급여 와 시급 계산 출력 하루급여는 소수 3번쨰 버리고 시급은 소수 2번째자리 버림
+
+select empno, ename,sal, trunc (sal / 21.5, 2) day_pay, round( sal/21.5 /8,1)
+ as time_pay
+    from emp;
+    
+
+
+
+--직속상관의 사원번호가 없을떄 0000
+--직속상관의 사원번호 앞 두자리가 75일떄 5555
+--직속상관의 사원번호 앞 두자리가 76일떄 6666
+--직속상관의 사원번호 앞 두자리가 77일떄 7777
+--직속상관의 사원번호 앞 두자리가 78일떄 8888
+--그외 직속상관의 사원번호일떄 ; 본래 직속상관의 번호 그대로 출력
+
+
+select empno, ename, mgr,
+    case 
+    when mgr is null then '0000'
+    when substr(mgr, 1, 2) = 75  then  '5555'
+    when substr(mgr, 1, 2) = 76  then  '6666'
+    when substr(mgr, 1, 2) = 77  then  '7777'
+    when substr(mgr, 1, 2) = 78  then  '8888'
+    end from emp;
+
+
+select 
+        case 
+        when mgr is null 
+        then '0000'
+        when substr (mgr,2,1) in('5','6','7','8')
+        then lpad(substr(mgr,2,1),4,substr(mgr,2,1) )    
+    end        
+        end
+        from emp;
+
+
+select empno, ename, mgr,
+    case
+        when mgr is null
+        then'0000'
+        when mgr is not null
+        then 
+        case substr(mgr,1 ,2)
+        when '75' then '5555'        
+        when '76' then '6666'
+        when '77' then '7777'
+        when '78' then '8888'
+        end 
+        end from emp;
+
+rpad(substr(ename,1,1),5,'*') MASKING_ENAME
+
+
+select empno,rpad(substr(empno,1,2),4,'*') MASKING_EMPNO,
+ename from emp;
+
+--
+
+--sum
+select sum(sal) from emp;
+
+select sum(comm+sal) from emp;
+
+
+select sum(sal) from emp
+where deptno = 10 or deptno = 20;
+
+
+select count(*)
+,sum (sal) from emp;
+
+
+
+select count(sal)
+,
+count(comm) from emp;
+
+select max(sal)
+from emp;
+
+select max(sal)
+from emp
+where deptno = 10;
+
+
+select min(sal)
+from emp;
+
+select count(*) from emp
+where ename like '%A%';
+
+
+select avg(sal)
+from emp
+
+where deptno = 30; --평균값
+
+select * from emp 
+where sal > avg(sal);  -- 다중행 함수(집계 함수)는 where  에서 사용할수없다 
+
+
+select avg(sal),deptno
+from emp
+group by deptno;
+
+select deptno , count(*),sum(sal)
+from emp group by deptno;
+
+
+select job from emp
+group by job;
+
+
+
+
+
+select job ,count(*)
+from emp
+where deptno =10
+group by deptno, job
+order by job desc;
+
+
+
+select deptno ,job ,count(*),ename
+from emp
+group by deptno, job,ename;
+
+
+select job
+from emp
+where deptno =10
+group by job
+order by job desc;
+
+
+select job, deptno
+from emp
+group by deptno, job
+having deptno = 10;
+
+
+select job, deptno, avg(sal)
+from emp
+group by deptno, job;
+
+
+select job, deptno, avg(sal)
+from emp
+group by deptno, job
+having avg(sal) > 2000
+order by avg(sal) desc;
+
+
+
+--      having 아껴쓰는게 좋다 where 쓸수있으면 where 쓰라
+
+/*group by
+ 지정한 컬럼을 기준으로 묶어준다
+ select 엔는 group by 에 지정된 걸럼과 단일행 함수 (집꼐함수만) 사용할수있따
+ */
+ 
+ 
+
+ /*
+ having  
+ group by 사용 한경우에만 사용이 가능하다 
+ where 와 비슷하지만 단일행 함수를 사용할수있따
+ group by 의 조건을 줄떄 사용함 
+  - where 에서 표현할수이쓴ㄴ것은 가급적 where 에서 처리하는게 좋다    
+  -그래서 보통 단일행 함수를 조건으로 주고 싶을 떄 사용한다
+ */
+
+--                          실행 순서
+select job, count(*) as cnt -- 5 번쟤 실행
+from emp     -- 1  가장먼저 실행됨
+where  sal > 1000 -- 2 번쨰 로 실행 --  and  cnt > 3; 
+group by job -- 3 번쨰로 실행
+having count(*) >= 3 --4 번쨰 실행
+order by cnt desc; --6 번쨰 실행
+
+
+
+-- emp테이블 부서번호  평균급여 최고 급여 최저급여 사원수 
+----출력 단 평균급여를 출력할떄 소수는 제외 
+-- count,avg(sal),min(sal),max(sal),count(*)
+
+
+select deptno,trunc(avg(sal)),trunc(max(sal)),trunc(min(sal)),count(*) as cnt
+from emp
+group by deptno;
+
+
+select job,count(*)
+from emp
+group by job
+having count(*) >= 3;
+
+
+
+select comm
+    case 
+    when comm is null   then "x"  
+    when comm > '0' then "o"
+    end
+from emp;
+
+
+select 
+    case 
+    when comm is null then  'x'
+    when comm >= 0 then 'o'
+        end as p ,count(*)
+  from emp
+group by     case 
+    when comm is null then  'x'
+    when comm >= 0 then 'o'
+        end ;
+
+
+
+
+
+select
+where 
+from emp 
+group by ;
+
+select deptno,trunc(avg(sal)),trunc (max(sal)),trunc(min(sal)),count(*)as cnt
+from emp
+group by deptno ;
+
+select job, count(*) from emp
+having count(*) >= 3
+group by job;
+
+
+
+
+select
+to_char(hiredate, 'yyyy') as hire_year, deptno,count(*)
+from emp
+group by to_char(hiredate, 'yyyy'),deptno;
+
+
+--추가수당 받는 사원수 안받는 사원의수
+
+
+
+
+
+
+
+
+
+select nvl2(comm,'o','x') as EXIST_COMM,count(*)
+from emp
+group by nvl2(comm,'o','x');
+
+
+
+select comm,count(*)
+from emp;
+
+
+
+
+select job, count(*) as cnt -- 5 번쟤 실행
+from emp     -- 1  가장먼저 실행됨
+where  sal > 1000 -- 2 번쨰 로 실행 --  and  cnt > 3; 
+group by job -- 3 번쨰로 실행
+having count(*) >= 3 --4 번쨰 실행
+order by cnt desc; --6 번쨰 실행
+
+
+
+
+select empno,ename,mgr,
+         case 
+         when mgr like '75%'  then '5555'
+         when mgr like '76%'  then '6666'
+         when mgr like '77%'  then '7777'
+         when mgr like '78%'  then '8888'
+         else  '0000'
+        end as chr_mgr
+         from emp;
+                 
+                 
+                         
+         SELECT empno, mgr,ename,
+    CASE mgr
+        WHEN mgr LIKE '75%' THEN '5555'
+        WHEN mgr LIKE '76%' THEN '6666'
+        WHEN mgr LIKE '77%' THEN '7777'
+        WHEN mgr LIKE '78%' THEN '8888'
+        ELSE '0000' -- 어떤 조건도 만족하지 않으면 'Unknown'을 반환
+    END AS chr_mgr
+FROM emp;
+         
+         
+    
+        SELECT empno, ename, mgr,
+  CASE mgr
+    WHEN 7566 THEN '5555'
+    WHEN 7698 THEN '6666'
+    ELSE '0000'
+  END AS result
+FROM emp;
+
+        
+        select empno,ename,mgr
+         case 
+         when mgr like '75%'  then  '5555'
+         when mgr like '76%'  then  '6666'
+         when mgr like '77%'  then  '7777'
+         when mgr like '78%'  then  '8888'
+         else mgr is null = '0000'
+        end as chr_ mgr
+         from emp;
+                 
+        
+        
+        
+        select mgr 
+        from emp 
+        where mgr like  '75%';
+         
+         
+         
+         
+         
+         SELECT empno, amene, mgr,
+    CASE 
+        WHEN mgr LIKE '75%' THEN '5555'
+        WHEN mgr LIKE '76%' THEN '6666'
+        WHEN mgr LIKE '77%' THEN '7777'
+        WHEN mgr LIKE '78%' THEN '8888'
+        ELSE '0000' -- 어떤 조건도 만족하지 않으면 'Unknown'을 반환
+    END AS chr_mgr
+FROM emp;
+         
+         
+    
