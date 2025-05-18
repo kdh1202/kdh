@@ -1355,4 +1355,111 @@ FROM emp;
 FROM emp;
          
          
+         
+         
+ -- 1번 각 부서(deptno)별로 평균 급여(sal)를 구하시오.
+ select deptno,trunc(avg(sal),0) from emp
+ group by deptno;
+ 
+--2번 각 직무(job)별로 직원 수를 구하시오.
+
+select 
+job, count(*)
+from emp
+group by job;
+
+--각 부서별로 총 급여(sal)의 합을 구하고, 그 결과에 별칭 total_sal을 붙이시오.
+select 
+deptno, sum(sal) as total_sal
+from emp
+group by deptno;
+
+
+----각 직무별로 최고 급여(sal)와 최저 급여를 구하시오.
+select 
+job, max(sal),min(sal)
+from emp
+group by job;
+----각 부서별로 직원 수(empno)와 평균 급여를 구하시오. 단, 컬럼명은 각각 emp_count, avg_sal로 지정하시오.
+
+select 
+deptno,trunc(avg(sal),0) as avg_sal ,count(*)  as emp_count
+from emp
+group by deptno;
+
+
+----각 부서번호와 직무(job)를 기준으로 그룹을 묶고, 해당 그룹의 직원 수를 구하시오.
+
+         select 
+        deptno, job, count(*)
+         from emp
+         group by deptno, job;
+        
+        
+        
+   
+--      직무(job)별로 직원 수와 평균 급여를 구하고,
+--        직원 수가 2명 이상인 직무만 출력하시오.
+
+
+       -- 
+       select 
+       job ,trunc(avg(sal)),count(*)
+       from emp
+       group by job 
+       having count(*) > 2;
+        
+
+--부서별로 급여의 합(sal)과 인원 수를 구하시오.
+--단, 급여 합이 5000 이상인 부서만 출력하시오.
+         
+         
+         --  급여합5000이상
+         select 
+         deptno,trunc(sum(sal)),count(*)
+         from emp
+         group by deptno
+         having sum(sal) >=  9000;
+      
+     
+--     
+--        emp 테이블에서 부서별로 급여(sal) 평균 + 커미션(comm) 평균의 합을 구하고,
+--        이 값이 2000 이상인 부서만 출력하시오.단, comm이 NULL인 경우는 0으로 처리하시오.
+--         
+         
+         -- 급여의 평균 커미션 평균 합
+         -- 2000이상의 부서  comm 이 눌인 경우  0 '
+         
+        select 
+        deptno, avg(sal)+ avg(nvl(comm,0)) as 합
+        from emp 
+        group by deptno 
+        having  avg(sal)+ avg(nvl(comm,0))   > 2000;
+        
+         
+         select deptno,  nvl(avg(comm,0
+         from emp 
+         group by deptno;
+         
+         
+         select deptno,comm,sal from emp
+         group by deptno;
+         
+         
+         
+         select deptno, avg(nvl(comm,0)) from emp
+group by deptno;
+         
+         SELECT 
+    deptno,
+    AVG(sal) AS avg_sal,
+    NVL(AVG(comm), 0) AS avg_comm,
+    AVG(sal) + NVL(AVG(comm), 0) AS 합
+FROM emp 
+GROUP BY deptno 
+HAVING AVG(sal) + NVL(AVG(comm), 0) > 2000;
+         
+         
+         
+         
     
