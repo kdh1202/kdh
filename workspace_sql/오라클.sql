@@ -1436,30 +1436,296 @@ group by deptno;
         group by deptno 
         having  avg(sal)+ avg(nvl(comm,0))   > 2000;
         
-         
-         select deptno,  nvl(avg(comm,0
-         from emp 
-         group by deptno;
-         
-         
-         select deptno,comm,sal from emp
-         group by deptno;
-         
-         
-         
-         select deptno, avg(nvl(comm,0)) from emp
-group by deptno;
-         
-         SELECT 
-    deptno,
-    AVG(sal) AS avg_sal,
-    NVL(AVG(comm), 0) AS avg_comm,
-    AVG(sal) + NVL(AVG(comm), 0) AS 합
-FROM emp 
-GROUP BY deptno 
-HAVING AVG(sal) + NVL(AVG(comm), 0) > 2000;
-         
-         
-         
-         
+---------------------------------------
+select * from dept;
+
+
+select * from emp,dept
+order by empno;
+
+--  . = of 
+
+select * from emp,dept
+where emp.deptno = dept.deptno 
+order by empno;
+
+-- as  는 select 에서만사용가능
+
+select * from emp e,
+dept d
+where e.deptno = d.deptno
+order by empno;
+
+-- 
+--select ename,deptno from emp e,
+--dept d
+--where e.deptno = d.deptno
+--order by empno;
+
+
+
+select e.ename,d.deptno from emp e,
+dept d
+where e.deptno = d.deptno
+order by empno;
+
+
+-- join
+-- 여러 테이블에서 나눠져 있는 정보를 취합해서 한줄에서 볼수잇는방법
+-- 테이블 간에 관계에 따라 조건을적용해서 필요한 정보만 얻는방법
+-- 점(.) 은 소유(가지고 있는) 를   뜻한다 
+    --  emp.deptno 테이블의 deptno를뜻함
+    -- 테이블등에 하나 이상 중복 된는 컬럼명이 있는 경우 소유자를 꼭적어야한다 
+       -- 유일한 컬럼명일떄는 소유자를 안적어도 (생략) 해도 된다.
+
+
+select e.ename,d.deptno from emp e,
+dept d
+where e.deptno = d.deptno
+order by empno;
+
+select * from emp e,
+dept d
+where e.deptno = d.deptno
+order by empno;
+
+select * from salgrade; 
+
+select * 
+from emp e ,salgrade s
+where e.sal >= s.losal and e.sal <= s.hisal;
+
+
+
+select * from emp;
+
+-- 앨런의 상사 블레이크 
+select e1.empno, e1.ename , e1.mgr, e2.empno, e2.ename
+from emp e1, emp e2
+where e1.mgr = e2.empno;
+
+
+select e1.empno,e1.ename,e1.mgr,
+e2.empno, e2.ename
+from  emp e1,emp e2
+where e1.mgr = e2.empno(+); 
+
+
+
+select e1.empno,e1.ename,e1.mgr,
+e2.empno, e2.ename
+from  emp e1,emp e2
+where e1.mgr(+) = e2.empno; 
+
+
     
+    
+select e.empno, e.ename, e.job, e.mgr, e.hiredate,e.sal, e.comm,
+deptno,d.dname,d.loc /*(deptno)*/
+from emp e join dept d using (deptno)
+where sal >= 3000;
+    
+    
+select e.empno, e.ename, e.job, e.mgr, e.hiredate,e.sal, e.comm,
+e.deptno,d.dname,d.loc  /*deptno*/
+from emp e join dept d on (e.deptno = d.deptno)
+where sal >= 3000;
+     
+    select *
+    from emp e1 join emp e2 on (e1.mgr = e2.empno);
+
+
+    select *
+    from emp e1 left outer join emp e2 on (e1.mgr = e2.empno);
+        
+    
+    
+    select *
+    from emp e1 right outer join emp e2 on (e1.mgr = e2.empno);
+        
+    
+    select *
+    from emp e1 full outer join emp e2 on (e1.mgr = e2.empno);
+    
+    select e.deptno, d.dname, e.ename,e.empno,e.sal
+    from emp e 
+    left outer join dept d on e.deptno = d.deptno
+    where  e.sal > 2000
+    order by deptno;
+    
+    
+    select e.deptno, avg(e.sal),max(e.sal),min(e.sal),count(*)
+    from emp e
+    where e.deptno = e.sal
+    group by e.deptno;
+
+
+ --3 
+select 
+d.deptno,d.dname,e.empno,e.ename,e.job,e.sal
+from dept d, emp e
+where e.deptno(+) = d.deptno 
+order by deptno;
+
+
+select d.deptno,d.dname,e.empno,e.ename,e.job,e.sal
+    from dept d
+    left outer join emp e  on (e.deptno = d.deptno);
+    
+    
+    
+ select
+ d.deptno,d.dname,e.empno, e.ename,e.mgr, e.sal
+ from emp e, dept d, salgrade s
+ left join e.emp on (s.sal = e.sal) 
+ where  sal >= losal and sal <= hisal
+ order by deptno;
+ 
+
+select 
+d.deptno,d.dname,e.empno,e.ename,e.job,e.sal
+from dept d, emp e
+where e.deptno(+) = d.deptno 
+order by deptno;
+
+
+select d.deptno,d.dname,e.empno,e.ename,e.job,e.sal
+    from dept d
+    left outer join emp e  on (e.deptno = d.deptno);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ select
+ d.deptno,d.dname,e.empno, e.ename,e.mgr, e.sal,e.deptno,
+ s.losal,s.hisal,s.grade, c.empno mgr_empno,c.ename mgr_ename
+ from dept d
+ left outer join  emp e on (e.deptno = d.deptno)
+ left outer join  salgrade s on( sal >= losal and sal <= hisal) 
+ left outer join  emp c on (e.mgr = c.empno)
+ order by e.deptno,e.empno;
+
+ 
+ 
+ select 
+ d.deptno,d.dname,e.empno,e.ename,e.mgr,e.sal,e.deptno,
+ s.losal,s.hisal,s.grade,m.empno MGR_EMPNO,m.ename MGR_ENAME
+from dept d 
+left outer join emp e on e.deptno = d.deptno
+left outer join salgrade s on e.sal >= s.losal and e.sal <= s.hisal
+left outer join emp m on e.mgr = m.empno
+
+
+
+
+
+
+
+
+
+
+
+
+order by e.deptno,e.empno;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ select 
+ d.deptno, d.dname , e.empno, e.ename, e.mgr, e.sal,
+ e.deptno, s.losal, s.hisal, s.grade, c.empno mgr_empno, c.ename mgr_ename
+ from dept d
+ left outer join emp e on d.deptno = e.deptno
+ left outer join salgrade s on sal >= losal and sal <= hisal
+ left outer join emp c on  e.mgr = c.empno
+ order by d.deptno,e.empno;
+ 
+ -- 
+ --각 직원의 다음 정보를 모두 출력하는 쿼리를 작성하세요:
+--직원 사번, 이름, 직무, 급여 부서명과 부서 위치
+--해당 직원의 급여 등급 (salgrade 기준)
+--상사의 이름 (emp 테이블에서 상사 정보 추출)
+-- 
+ 
+  select 
+ e.empno,e.ename,e.job, e.sal, e.deptno,
+ s.grade,c.empno,d.loc,d.dname
+ from emp e
+ left outer join dept d on e.deptno = d.deptno 
+ left outer join salgrade s on sal >= losal and sal <= hisal
+left outer join  emp c on e.mgr = c.empno;
+
+ 
+ SELECT 
+  e.empno, e.ename,e.job,e.sal,e.deptno,
+  d.dname,  d.loc, s.grade, m.ename AS mgr_name
+FROM emp e
+LEFT OUTER JOIN dept d ON e.deptno = d.deptno
+LEFT OUTER JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal
+LEFT OUTER JOIN emp m ON e.mgr = m.empno
+ORDER BY e.deptno, e.empno;
+
+
+ 
+ select * from dept;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
