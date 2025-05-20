@@ -1712,20 +1712,303 @@ ORDER BY e.deptno, e.empno;
  
  select * from dept;
  
+
  
  
+ -- 각부서별로 급여가
+ -- 가장높은사원, 가장 낮은 사원의 급여 차이를 가져와
  
+
+select deptno,max(sal),min(sal),max(sal)-min(sal)
+from emp
+group by deptno;
+  
  
+-- 전체 길이의반  -- 글씨 길이의반 
+
+
+select 
+job,
+lpad (job,(length(job)/2+20/2),'-'),
+rpad ( lpad job, (length(job)/2 + 20/2),'-'), 20 ,'-')
+from emp;
+
+
+select 
+d.deptno,d.dname,e.empno,e.ename,e.sal
+from dept d
+left outer join emp e on e.deptno = d.deptno
+where  sal > 2000
+order by d.deptno,d.dname ;
+
+
+select d.deptno,d.dname,e.empno,e.ename,e.job,e.sal 
+from dept d
+left outer join emp e on d.deptno = e.deptno
+order by e.deptno;
+
+
+
+
+select sal from emp
+where ename = 'JONES';
+
+select * from emp
+where sal > 2975;
+
+
+
+-- 서브 쿼리    
+select * from emp
+where sal > (select sal from emp
+where ename ='JONES');
+
+
+select * from emp
+where comm >= 
+(select comm from emp
+where comm  = 300);
+
+
+select * from emp
+where hiredate <
+(select hiredate from emp
+where ename = 'SCOTT');
+
+--emp 부서 의 평균보다 많이 받는사람
+select
+* from emp
+where sal > 
+(select avg(sal) from emp
+);
+
+
+select * from emp 
+where sal in
+(select max(sal) from emp
+group by deptno);
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+select * from emp;
+select * from emp, dept
+where emp.deptno = dept.deptno;
+
+
+
+
+
+select
+e1.empno,e1.ename,e1.deptno,d.dname,d.loc
+from (select * from emp where deptno = 10) e1,
+(select * from dept)d
+where e1.deptno = d.deptno;
+
+--- 직책별로  3명이상 
+select * from  
+ (select job, count(*) cnt
+from emp
+group by job)
+where cnt >= 3;
+
+-- 두번쨰 것만 뽑고싶을떄 
+--rownum <<  별칭 이기떄문에 키워드를 사용하면 된다
+-- 사용할 용도에 맞지않는다
+select * from
+(
+select rownum rn, emp.*
+from emp)
+where rn > 3  and rn < 6;
+
+
+select * from
+(
+select rownum rn, emp.*
+from emp)
+order by sal desc;
+
+
+select  rownum rn , e.*
+from
+(select  emp.*
+from emp
+order by sal desc )
+e;
+
+
+-- 연봉순으로 순서된 2번 3번
+
+select * from(
+select  sal ,rownum rn
+from 
+(select sal
+from emp 
+order by sal desc)e
+)where rn >= 2  and rn <= 3 
+;
+-- 
+
+
+
+with e10 as (
+select * from emp where deptno = 10
+)
+select ename from e10;
+-- 
+
+select empno,ename,job,sal,
+(select grade 
+from salgrade
+where e.sal > losal and e.sal < hisal) as salgrade,
+deptno,
+(select dname
+from dept
+where e.deptno = dept.deptno) as dname
+from emp e ;
+
+
+
+
+
+-- dname 쪽에 양이 너무많아요 
+select empno,ename,job,sal,
+(select grade 
+from salgrade
+where e.sal > losal and e.sal < hisal) as salgrade,
+deptno,
+(select dname,loc
+from dept
+where e.deptno = dept.deptno) as dname
+from emp e ;
+
+select  sal 
+from 
+(select sal,rownum rn
+from emp 
+order by sal desc)e;
+
+where e.job = (select dname from dept
+where dname = e.job )d;
+
+
+
+
+
+select e.job,e.empno,e.ename,deptno,d.dname
+from emp e
+where job = (select job from emp 
+where job = 'SALESMAN' )e;
+
+
+select job, empno,ename,sal
+from emp,
+(select job from emp 
+where job = 'SALESMAN' )e;
+(select dname from dept
+where dname = e.job  )d;
+where 
+
+
+
+select from emp;
+
+
+select job from emp
+where job ='SALESMAN';
+
+
+
+
+
+-- 서브 쿼리일떄  서브 쿼리부터 시작
+select job, empno, ename, sal , d.deptno,d.dname
+from dept d,emp e
+where job =
+(select job from emp
+where ename = 'ALLEN')and dname = 'SALES'
+order by sal desc;
+
+
+
+
+
+
+
+-- 1번 분제 249쪽select job, empno, ename, sal , deptno
+from emp
+where job =
+(select job from emp
+where ename = 'ALLEN');
+
+
+
+
+
+/* 전체 사월 평균 급여 보다 많이 받는사원 , 사원의 정보 
+부서정보 급여 등급 급여감많은순 으로 출력 같다면 사원번호 기준 오름차순*/
+
+
+select 
+e.empno,e.ename,d.dname,e.hiredate,
+d.loc,
+e.sal,
+(select grade from salgrade
+where  sal >= losal and sal <= hisal) as grade
+from emp e,dept d
+where  e.deptno = d.deptno and
+sal >
+(select avg(sal)from emp)
+order by sal desc,empno desc ;
+
+
+-- 10번 부서  30번 부서에 없는 직책의 사원 사원정보 부서정보 
+
+select e.empno, e.ename , 
+job, d.deptno ,
+d.dname ,d.loc
+from emp e, dept d
+where job = (select job from emp
+where e.deptno = ;
+
+select * from emp ;
+select * from dept;
+
+
+
+
+select e.empno,e.ename,e.job, e.deptno,d.dname,d.loc
+from emp e, dept d
+where job = 
+(select job from emp
+where deptno = 10 and deptno = 30);
+
+
+;select * from emp ;
+select * from dept ;
+group by deptno
+order by deptno;
+
+
+and deptno =
+(select  job from
+where job =   ));
+
+
+
+select e.empno,e.ename,e.job,e.deptno,d.dname,d.loc
+  from emp e, dept d 
+  where e.deptno = 10 and e.job not in(select job from emp where deptno = 30 )
+    and e.deptno = d.deptno ;
+
+
+-- 직책이 세일즈맨 인 사람의 최고급여 > 사원의 사원정보 그병등급
+select 
+empno,ename,sal,
+(select grade from salgrade
+where sal >= losal and sal <= hisal) as grade
+from emp
+where sal > (select max(sal) from emp
+where job = 'SALESMAN') 
+order by empno;
+
+
