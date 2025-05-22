@@ -2286,7 +2286,105 @@ as select * from emp;
  where deptno = 10;
  rollback;
  
- select * from emp_temp3
+ select * from emp_temp3;
+
+
+
+create table  table_pk(
+login_id varchar2(20)  primary key,
+login_pwd varchar2(20) not null,
+tel  varchar2(20));
+ 
+ 
+ 
+ desc table_pk;
+ 
+ 
+ 
+ 
+ 
+ select * from user_indexes;
+ 
+ insert into table_pk
+ values ('id2','pw2',null);
+ 
+ select * from table_pk;
+ 
+ 
+ 
+ 
+ 
+ update table_pk
+ set login_id = null
+ where login_id = 'id' ;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ create table dept_fk(
+ deptno number(2) constraint deptfk_deptno_pk primary key,
+ dname varchar2(14),
+ loc varchar2(13));
+ 
+ 
+ 
+create table emp_fk
+(
+ empno number(4) constraint empfk_empno_pk primary key,
+ ename varchar2(10),
+ job varchar2(9),
+ ngr number(4),
+ hiredate date,
+ sal number(7,2),
+ comm number(7,2),
+ deptno number(2) constraint empfk_deptno_fk references dept_fk(deptno)
+ );
+ 
+ desc emp_fk;
+ 
+ -- 아직 dept_fk 가없어서 실패
+ insert into emp_fk
+ values ( 1000 , '이름' ,10);
+ 
+ 
+ insert into dept_fk
+ values (10,'부서','위치');
+ 
+ select * from dept_fk;
+ 
+ 
+ select * from emp_fk;
+ 
+ update dept_fk 
+ set deptno = 20
+ where deptno = 10;
+ 
+ 
+ 
+ delete dept_fk
+ where deptno = 10;
+ 
+ 
+ delete emp_fk
+ where deptno = 10;
+ 
+ 
+ update dept_fk 
+ set deptno = 10
+ where deptno = 20;
+ 
+ 
+ select * from dept_fk;
+ 
+ 
+ 
+ 
+ 
  
  
  
