@@ -2384,6 +2384,68 @@ create table emp_fk
  
  
  
+ /* ERD : Enity relationship  diagram
+ 흔히 E-R다이어그램 이라고 불리우며 ERD 라고 줄여부르기도한다 
+ 영어 약자로 그대로 '존재하고있는것'
+ 
+ */
+ 
+ 
+ desc emp;
+ 
+ 
+ 
+ 
+ 
+ CREATE TABLE 게임 (
+	Key	varchar2(4000)	NOT NULL,
+	Field	number(4)	NULL,
+	Field2	number(4)	NULL,
+	Field3	date	NULL,
+	Field5	VARCHAR(255)	NULL
+);
+
+CREATE TABLE 마크 (
+	Key	varchar2(4000)	NOT NULL,
+	Field	varchar2(4000)	NULL,
+	Field2	varchar2(4000)	NULL
+);
+
+CREATE TABLE `제작사` (
+	Key	varchar2(4000)	NOT NULL,
+	Field	varchar2(4000)	NULL,
+	Field2	varchar2(4000)	NULL,
+	Field3	date	NULL
+);
+
+ALTER TABLE `게임` ADD CONSTRAINT `PK_게임` PRIMARY KEY (
+	`Key`
+);
+
+ALTER TABLE `마크` ADD CONSTRAINT `PK_마크` PRIMARY KEY (
+	`Key`
+);
+
+ALTER TABLE `제작사` ADD CONSTRAINT `PK_제작사` PRIMARY KEY (
+	`Key`
+);
+
+ALTER TABLE `마크` ADD CONSTRAINT `FK_게임_TO_마크_1` FOREIGN KEY (
+	`Key`
+)
+REFERENCES `게임` (
+	`Key`
+);
+
+ALTER TABLE `제작사` ADD CONSTRAINT `FK_게임_TO_제작사_1` FOREIGN KEY (
+	`Key`
+)
+REFERENCES `게임` (
+	`Key`
+);
+
+
+
  
  
  
