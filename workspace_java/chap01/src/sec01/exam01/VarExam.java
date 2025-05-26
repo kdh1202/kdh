@@ -59,17 +59,20 @@ public class VarExam {
 	
 	
 	  
-	  int x1 = 26845;
-	  int x2 = 684684;
-	   
-	  /*
-	   * x1 =684684;
-	   * x2 = 26845;
-	   * 
-	   */
+	 int x1 = 26845; 
+	 int x2 = 684684;
+	 
 	 System.out.println("x1:"+ x1);   //684684
 	 System.out.println("x2:"+ x2);  //26845
-	  
+	 
+	 
+	   
+	 
+		  /*
+		   * x1 =684684;
+		   * x2 = 26845;
+		   * 
+		   */
 /*     {
  *		{int x1 = 26845;
  *		int x2 = 684684;}
@@ -79,8 +82,25 @@ public class VarExam {
  * 		System.out.println("x2:"+x2);
  *             }
  */
-	
-	
+	/*
+	  int x1 = 26845;
+	  int x2 = 684684;
+	  System.out.println("x1:"+ x1);   //684684
+	  System.out.println("x2:"+ x2);   //26845
+	  
+	  	  
+	 int x1 = 26845; 
+	 int x2 = 684684;
+	 int temp = x1;
+	 x1 = x2;
+	 x2 = temp; 
+	 System.out.println("x1:"+ x1);   //684684
+	 System.out.println("x2:"+ x2);  //26845
+	 
+	 
+	  
+	 */
+	 
 	}
 
 }
