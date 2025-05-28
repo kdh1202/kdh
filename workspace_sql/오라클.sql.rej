@@ -1,0 +1,307 @@
+diff a/workspace_sql/오라클.sql b/workspace_sql/오라클.sql	(rejected hunks)
+@@ -1989,3 +1989,304 @@
+ order by empno;
+ 
+ 
++select 
++e.empno,e.ename,e.sal,s.grade
++from salgrade s , emp e
++where sal > (select max(sal) from emp
++where job = 'SALESMAN') 
++and  sal >=losal and sal <= hisal; 
++
++
++
++
++
++
++
++
++
++--급여 등급(GRADE)이 3인 사원의 ENAME, SAL, GRADE를 출력하시오.
++--힌트: SALGRADE에서 등급 3의 급여 범위를 찾은 뒤, 해당 범위에 포함되는 사원을 EMP에서 조회합니다.
++select ename , sal ,grade 
++from salgrade , emp 
++where sal >= losal and sal <= hisal
++and grade  = 3; 
++
++;
++select * from salgrade;
++
++
++--1 커미션이 null인 사원을 급여 오름차순으로 정렬
++select *
++from emp
++where comm is null
++order by sal ;
++
++--2 급여등급 별 사원수를 등급 오름차순으로 정렬 , 단 모든등급을 표시
++
++select grade ,count(*) from emp, salgrade
++where sal >= losal and sal <=hisal
++group by grade
++order by grade;
++
++
++--3 , 이름 급여 급여등급 , 부서이름 조회
++-- 단 급여등급 3이상만 조회 .급여등급 내림차순,급여등급이 같은경우 내림차순
++
++select ename ,sal, grade , job from emp,salgrade
++where  sal >= losal and sal <=hisal
++and grade  >= 3
++order by grade desc,sal desc;
++
++
++/*
++select e.ename,e.sal,s.grade,d.dname 
++from emp e, salgrade s , dept d
++where sal >= losal and sal <=hisal
++and grade  >= 3
++and e.deptno = d.deptno
++order by grade desc,sal desc; */
++
++
++--4 부서명이 SALES 인 사원중 급여등급이 2 또는 3인 사우넏을 급여 내림차순
++
++select dname,
++grade, ename,sal
++from emp e,dept d, salgrade
++where sal >= losal and sal <= hisal and
++dname = 'SALES' 
++and grade in (2,3)
++order by  sal desc;
++
++
++select * from emp
++where deptno = 30;
++
++
++---------------------------------------
++desc emp; -- 테이블의 구조를설명 
++/*     오라클 자료 타입 
++ char (길이): 
++ -글씨를 넣을 수 있음 최대  길이:2000byte
++ varchar2 (길이) : 
++ -글씨를 넣을수있음 최대 길이 : 4000byte 
++ -길이가 변경됨
++ number (전체길이, 소수점 길이)
++ -숫자 만 넣을 수 있음 
++ -최대 길이 : 38
++ number(7,2) : 전체자리 7 자리 소수점이하 2자리까지 기록
++ date : 날짜 형식
++ */
++
++
++create table emp_ddl 
++(
++empno number(4),
++ename varchar2(10),
++job varchar2(9),
++mgr number(4),
++hiredate date,
++sal number (7,2),
++comm number (7,2),
++deptno number (2)
++);
++
++desc emp_ddl;
++
++select * from emp_ddl;
++
++create table dept_ddl
++
++as select * from dept;
++
++desc dept_ddl;
++
++select * from dept_ddl;
++
++
++create table emp_ddl_30
++ as select * from emp
++ where deptno = 30;
++
++select * from emp_ddl_30;
++
++
++create table empdept_ddl
++as select e.empno,e.ename,e.job,e.mgr,e.hiredate,
++e.sal,e.comm,d.deptno,d.dname,d.loc
++from emp e, dept d
++where 1 <> 1;
++
++
++select * from empdept_ddl;
++
++
++--alter사용법
++create table emp_alter 
++as select * from emp;
++
++select * from emp_alter;
++
++
++ alter table emp_alter
++ add hp varchar2(20); --  varchar 로 적으면 자동으로 varchar2로 인식한다 
++ 
++
++select * from emp_alter;
++
++alter table emp_alter
++add age number(3) default 1;
++
++-- alter table 밑에  rename 있따 
++
++alter table emp_alter
++rename column tel  to age;
++   
++   
++alter table emp_alter
++rename column hp to tel;
++   
++   
++select * from emp_alter;
++
++
++alter table emp_alter
++modify empno number(5);
++
++-- 수정할떄 타입이 커지는건 가능  하지만 줄어드는건 못함
++alter table emp_alter
++modify empno number(4);
++
++desc emp_alter;
++
++
++alter table emp_alter 
++drop column tel;
++
++desc emp_alter;
++
++select * from emp_alter;
++
++rename emp_alter to emp_rename;
++
++select * from emp_rename;
++
++truncate table emp_rename;
++
++-- truncate    테이블 내용을 버림  사용할떄 신경써서 조심해서 사용해라 
++
++
++drop table emp_rename;
++
++
++
++create table dept_temp
++as select * from dept;
++
++select * from dept_temp;
++
++
++insert into dept_temp (deptno, dname, loc)
++values (50, 'DATABASE', 'SEOUL');
++
++insert into dept_temp (deptno, dname, loc)
++values (50, 'DATABASE', 'SEOUL');
++
++insert into dept_temp
++values (60, 'NEWYORK','BUSAN');
++
++select * from dept_temp;
++
++-- 명시적  명확하게 
++ 
++ insert into dept_temp
++ values 
++  (80,'MOBILE','');
++  
++  select * from dept_temp;
++  
++insert into dept_temp (deptno,loc)
++ values (90,'INCHEON');
++ 
++ 
++create table emp_temp
++as select * from emp
++where 1 <> 1 ;
++
++select * from emp_temp;
++
++
++
++insert into emp_temp  (empno, ename, hiredate)
++values (3111,'심청이',sysdate);
++
++ 
++ 
++select * from emp_temp; 
++ 
++ insert into emp_temp 
++ select * from  emp where deptno = 10;
++ 
++ 
++ 
++ create table dept_temp2
++ as select * from dept;
++ 
++ 
++ select * from dept_temp2;
++ 
++ 
++ update dept_temp2
++ set loc = 'SEOUL';
++ 
++ -- update 나 delete 의  
++ --where 의 무조건 select 에서 검증하고 사용해라
++ update dept_temp2
++ set dname = 'DATABASE',
++ loc = 'SEOUL2'
++ where deptno = 40;
++ 
++ 
++ 
++ select * from dept_temp2
++ where deptno = 40;
++ 
++ 
++ select * from emp_temp;
++ 
++create table emp_tmp
++ as select * from emp;
++ 
++ 
++ select * from emp_tmp;
++ 
++ 
++select * from emp_tmp
++where sal < 1000;
++ 
++ 
++ -- 하기전에 셀렉트에서 연습하고 실행한다
++ update emp_tmp 
++ set sal = sal * 1.03
++where sal < 1000 ;
++ 
++ 
++ 
++ 
++create table emp_temp3
++as select * from emp;
++ 
++ 
++ 
++ select * from emp_temp2;
++ 
++ commit;
++ 
++ 
++ delete emp_temp3
++ where deptno = 10;
++ rollback;
++ 
++ select * from emp_temp3
++ 
++ 
++ 
+\ No newline at end of file

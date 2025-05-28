@@ -2286,6 +2286,7 @@ as select * from emp;
  where deptno = 10;
  rollback;
  
+<<<<<<< HEAD
  select * from emp_temp3;
 
 
@@ -2447,6 +2448,9 @@ REFERENCES `게임` (
 
 
  
+=======
+ select * from emp_temp3
+>>>>>>> parent of 58b8c2d (d)
  
  
  
