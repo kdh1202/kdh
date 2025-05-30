@@ -138,11 +138,11 @@ public class OpExam {
 		// a- (a%100)
 		
 		int k =1937;
-		k = k -(k%100);
-		k = k / 100;
+//		k = k -(k%100);
+//		k = k / 100;
 //		k /= 100;
 		k = k * 100;
-		
+		System.out.println("k:"+k);
 		
 		// v1 / v2  를 소수점 3자리 까지 출력하시오
 		double v1 = 1000.0;

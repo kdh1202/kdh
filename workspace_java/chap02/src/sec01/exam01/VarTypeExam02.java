@@ -132,24 +132,6 @@ public class VarTypeExam02 {
         
         
         
-        // 숫자 537  출력의 결과  백의 자리 5 십의자리 3 일을자리 7
-        
-        int num = 998;
-        int bak = num / 100;
-        System.out.println("백의자리:"+ bak);
-        num = num - (bak*100);
-        System.out.println("num:"+num);
-        int ship =num / 10;
-        System.out.println("십의자리:"+ ship);
-        num = num-( ship*10);
-	    System.out.println("num:"+num);
-	    int il = num /1;
-	    System.out.println("일의자리:"+il);
-	    // 다시공부 
-	    
-	    
-	    
-	    
 	    
 	    
 	    
