@@ -260,12 +260,12 @@ public class ForExam {
 		//	   44444	
 		//	   55555
 			
-		{for (int a = 1; a <= 5; a++) {
+		for (int a = 1; a <= 5; a++) {
 			{for(int b = 1; b<=5; b++)
 					System.out.print(a);
 			}		System.out.println();
 		}
-		}
+		
 		
 		// 4444
 		
@@ -278,7 +278,7 @@ public class ForExam {
 		
 		
 		for (int iq =1; iq <= 5; iq++){
-		for(int iw = 1; iw <= iq ; iw++) {
+			for(int iw = 1; iw <= iq ; iw++) {
 		    	System.out.print(iq);}
 				System.out.println();
 			
@@ -315,24 +315,46 @@ public class ForExam {
 		 System.out.print(a);
 			}System.out.println();
 		}
-		
-		
-		
-		
+			
+//		for (int i1 = 5;i1 >= 5;i1--) {
+//				{for (int i101 = 1; i101 >=5 ; i101--) 
+//					System.out.print(6-i101);
+//			}System.out.println();
+//			}
 //	// 8단계
 //	    +....
 //	    ++...
 //	    +++..
 //	    ++++.
 //	    +++++
-//
+String art = ".";
+
+		for (int a = 1 ;a <= 5 ;a++) {
+			{for (int b = 1; b <= a; b++) 
+				System.out.print(mark);
+					for(int e = 1; e <= 5 - a; e++) {
+						System.out.print(art);	
+					}
+			}System.out.println();
+		}		
+
 //	// 9단계
 //	    ....+
 //	    ...++
 //	    ..+++
 //	    .++++
 //	    +++++
-//
+
+		for (int a = 1 ;a <= 5 ;a++) {
+			{for (int b = 1; b <= a; b++) 
+				System.out.print(mark);
+					for(int e = 1; e <= 5 - a; e++) {
+						System.out.print(art);	
+					}
+			}System.out.println();
+		}		
+		
+		
 //	// 10단계
 //	    ....+
 //	    ...+++
@@ -355,6 +377,109 @@ public class ForExam {
 //	    +++++ 
 		
 		
+		// 문제 1번 
+		// 주사위 두개를  굴려서 나올수 모든 조합을 출력한다 
+		// 
+		String ddd = " ";
+		for(int a = 1; a<=6; a++) {
+				for(int b =1; b <= 6; b++) {
+			System.out.print("["+a+" "+ b+"]");
+				}
+			System.out.println();
+		}	
+//				for (int c = 1; c <= 1; c++)
+//					System.out.print(" ");
+//					System.out.println(a+b);
+		
+			
+	
+		//문제 2번 
+		// 주사위 2개의 합별로 나올수 있는 조합 
+		// 합 2가 나오는 경우 [1,1]
+		// 합 3이 나오는 경우 [1,2] [2,1]
+
+		
+		
+		
+		//문제 3번 
+		// 합별로 조합의 수를 같이 출력 
+	
+		
+		
+		//문제 4번 
+		//순서에 관계 없이  중복제거 
+		//합: [1.1]
+		//합" [1.2].[2.1] 같음
+	
+		
+		for(int qq =1; qq<= 6; qq++) {
+			for(int kk = qq; kk<=6; kk++) {
+			 System.out.println("["+qq +","+ kk +"}");	
+			}
+			System.out.println();
+		}
+		
+		
+		
+
+		//		문제  5번
+		// 입력받은 정수에 따라 다음과 같이 출력 
+		
+		/*3
+		 * 00 01 02
+		 * 10 11 12
+		 * 20 21 22
+		 */
+		 
+
+		
+		
+		
+		/*4
+		 * 00 01 02 03
+		 * 10 11 12 13
+		 * 20 21 22 23
+		 * 30 31 32 33
+		 */
+		
+		
+		
+	
+		
+		
+		
+		//문제 6
+		// 입력받은 정수에 따라 다음과 같이 출력 
+		/*
+		 * 3
+		 * +++
+		 * +.+
+		 * +++
+		 */
+		
+		
+		
+		/*
+		 * 5
+		 * +++++
+		 * +...+
+		 * +...+
+		 * +++++
+		 */
+		
+		
+		int z = 5;
+		for(int j = 1; j <= z; j++) {
+			for(int k = 1; k<=z; k++) {
+				if(j == 1 || j == z ) {
+					System.out.print("+");
+				} else {
+				System.out.print(".");
+				}
+			System.out.println();
+			}
+		}
+		
 		
 		
 		
@@ -362,6 +487,7 @@ public class ForExam {
 		
 	}
 }
+
 
 
 		
