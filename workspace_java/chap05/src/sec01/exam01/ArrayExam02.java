@@ -106,7 +106,10 @@ public class ArrayExam02 {
 		int [] [] bs = new int [10][3];
 		bs[0] = bs0;
 		bs[1] = bs1;
-			
+		
+		System.out.println("bs.length:"+bs.length);
+		System.out.println("bs.length[0]:"+bs[0].length);
+		
 		
 //		배열,
 //		반복문 사용해서 1~10까지 저장,
@@ -121,18 +124,196 @@ public class ArrayExam02 {
 		
 		
 		int[] a = new int[11];
+		a[0] =1;
+		a[1] =2;
+		a[2] =3;
+		a[3] =4;
+		a[4] =5;
+		a[5] =6;
+		a[6] =7;
+		a[7] =8;
+		a[8] =9;
+		a[9] =10;
 		
 		
-		for (a[0] = 1; a[0]< 11; a[0]++)
+		for (a[0] = a[0]; a[0]< 11; a[0]++)
 				 {System.out.println(a[0]);
 				 }	
-		for(int  b = 1 ; b<a[0]; b++) {
-			System.out.println("답:"+b);
+		for( int [] b =new int [a[0]]; b[0] < a[0]; b[0]++) {
+			System.out.println(a[0]+"답:"+b[0]);
 		}
+		
+		int []e1 = new int[10];
+		for(int i= 0; i<10; i++) {
+			e1[i] = i+1;
+		} 
+//		for (int i=0; i<10;i++) {
+//			System.out.println("e1["+i+"]"+e1[i]);
+//		}
+		
+		
+		
+		
+		int [] f = {4,5,7,2,6,9};
+		int [] f2 = new int[f.length];
+		
+		for(int i = 0; i<f.length; i++) {
+			 System.out.println("f[i]:"+f[i]);
+			 
+		}
+		
+
+		for(int i = 0; i<f.length; i++) {
+			System.out.println("f[i]:"+f[i]);
+			}  
+		
+		for(int i = 0; i<f.length;i++) {
+			System.out.println("f2:"+f[i]);
+				f2[i]= f[i];
+		}
+			for (int i =0; i<f.length;i++) {
+				int data =f[i];
+				System.out.println(data);
+			}
+			// 향상된 for문
+			for(int data :f) {
+		           System.out.println("data:"+data);
+		       }
+			
+		
+//		int[] d1 = new int[] {1,2,3,4,5};
+////		int[] d1 = {1,2,3,4,5};  이것도 배열이다 
+//		int[] d2= d1;
+//		int[] d3= {1,2,3,4,5};
+//		System.out.println("d1 == d2 :"+(d1 == d2));
+//		System.out.println("d1 == d3 :"+(d1 == d3));
+//		
+//		d2[1] = 10;
+//		System.out.println("d1 :"+d1[1]);
+//		// 10 나오는 이유 번지수가 같아서 
+//		
+		
+		
+//		문제 0
+//		배열 깊은복사 :{1,2,3} ㅡ>{ 1,2 ,3}
+		
+		int[] cc = new int[3];
+		for (int ss=0; ss < 3; ss++ ) {
+			cc[ss] = ss+1; 
+			System.out.println("0번문제"+cc[ss]);
+		} 
+		
+		//  문 제 1 
+		//배열 뒤집기 :{1,2,3} -> {3,2,1}
+		
+		int [] ff = new int[3];
+		ff[0] = 1;
+		ff[1] = 2;
+		ff[2] = 3;
+		
+		for (int aa = 2; aa >=0 ;aa-- ) {
+			ff[aa] = aa+1;
+			System.out.println("1번 문제:"+ff[aa]);
+		}
+		
+		
+		
+//		문제 2
+//			{3,4,7,5,1,9,4}
+//		여기서 홀수의 개수 찾기
+		
+		int[] d = new int [] {3,4,7,5,1,9,4};
+		int cnt = 0;
+		
+		for( int df = 0; df <d.length; df++  ) {
+			if ( d[df] %2 !=0 ) {
+				System.out.println("홀수"+d[df]);
+				cnt++;
+			}  	
+			 } 
+		System.out.println("홀수 개수:"+cnt);
+		
+		
+		 int cnt1 = 0;
+			
+//		문제 3 
+//			{3,4,7,5,1,9,4}
+//		여기서 4보다 큰수의 개수 구하기
+			for(int s = 0; s< d.length;s++) {
+				if(d[s] > 4) {
+					System.out.println("4보다 큰수 :"+d[s]);
+				 cnt1++;
+				}
+			} System.out.println("4보다 큰수 의개수:"+cnt1);
+			
+//		문제 4	
+//		{3,4,7,5,1,9,4}
+//		최대값을 출력하시오
+			int max =0;
+			for (int h = 0; h <d.length; h++ ) {
+				if(d[h] > max ) {
+					max = d[h];
+				}
+			}System.out.println("최대값 출력:"+max);
+			
+			
+			int max4 = 0;
+			int max3 = 0;
+//		문제 5
+//		여기서 두번쨰 큰 수 구하기
+//			for (int j = 0; j <d.length; j++ ) {
+//				if(d[j] > max3 ) 
+//					max3 = d[j];
+//			}System.out.println(max3);
+//	
 	
 	
 	
+			
+//		문제6
+//		오른쪽으로 한칸밀기 왼쪽은 0으로 채우기
+//		예시 :{0,3,4,7,5,1,9,4}
+		
 	
+//			for ( d[0]=0; d[0] < d.length; d[0]++) {
+//				System.out.println(d[0]);
+				for (int xx= 0; xx < d.length; xx++){
+					System.out.println(d[xx]);
+				}
+//			}
+		
+		
+		
+			
+	
+//		문제 7
+//		오른쪽으로 이동하는대 맨끝에 값을 맨처음으로 보내기
+//		{3,4,7,5,1,9,4}ㅡ> {4,3,4,7,5,1,9}	
+			
+			
+			
+//		문제 8
+//		임시 비밀번호를 8자리 생성  랜덤 사용 
+//		8-1 : 숫자만 	
+//		8-2	: 소문자만 
+//		8-3 : 숫자 2개 이상 , 대/소문자 각1개이상
+		
+		
+//		문제 9
+//		자리가 10개있는 소극장의 예약시스템
+//		자리번호는 1~10번까지  번호의 자리가있음 
+//		메뉴 : "1 .예약 2 모든 자석 현황 3. 잔여 좌석 0번 종료"
+//		만약 1 : 예약이 가능하다면 "n번 자리 예약했습니다"
+//		만약 2 :  예약이 불가능 하다면 "이미 예약 되어있습니다 "
+			
+			
+//		문제10
+//		로또 6개 생성  단 중복 없이			
+		
+		
+		
+			
+			
 	
 	}	
 
