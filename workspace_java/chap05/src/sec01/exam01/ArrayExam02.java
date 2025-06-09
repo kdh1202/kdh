@@ -136,7 +136,7 @@ public class ArrayExam02 {
 		a[9] =10;
 		
 		
-		for (a[0] = a[0]; a[0]< 11; a[0]++)
+		for (a[0] = a[0]; a[0]< 1; a[0]++)
 				 {System.out.println(a[0]);
 				 }	
 		for( int [] b =new int [a[0]]; b[0] < a[0]; b[0]++) {
@@ -212,7 +212,7 @@ public class ArrayExam02 {
 		ff[2] = 3;
 		
 		for (int aa = 2; aa >=0 ;aa-- ) {
-			ff[aa] = aa+1;
+//			ff[aa] = aa+1;
 			System.out.println("1번 문제:"+ff[aa]);
 		}
 		
@@ -273,15 +273,13 @@ public class ArrayExam02 {
 //		문제6
 //		오른쪽으로 한칸밀기 왼쪽은 0으로 채우기
 //		예시 :{0,3,4,7,5,1,9,4}
-		
+
 	
 //			for ( d[0]=0; d[0] < d.length; d[0]++) {
 //				System.out.println(d[0]);
 				for (int xx= 0; xx < d.length; xx++){
-					System.out.println(d[xx]);
+					System.out.print(d[xx]);
 				}
-//			}
-		
 		
 		
 			
