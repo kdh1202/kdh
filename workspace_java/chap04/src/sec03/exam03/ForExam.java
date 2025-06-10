@@ -401,6 +401,11 @@ String art = ".";
 		
 		
 		
+		
+		
+		
+		
+		
 		//문제 3번 
 		// 합별로 조합의 수를 같이 출력 
 	
@@ -431,7 +436,8 @@ String art = ".";
 		 * 20 21 22
 		 */
 		 
-
+		
+		
 		
 		
 		
@@ -468,26 +474,27 @@ String art = ".";
 		 */
 		
 		
-		int z = 5;
-		for(int j = 1; j <= z; j++) {
-			for(int k = 1; k<=z; k++) {
-				if(j == 1 || j == z ) {
-					System.out.print("+");
-				} else {
-				System.out.print(".");
-				}
-			System.out.println();
-			}
-		}
-		
+//		int z = 5;
+//		for(int j = 1; j <= z; j++) {
+//			for(int k = 1; k<=z; k++) {
+//				if(j == 1 || j == z ) {
+//					System.out.print("+");
+//				} else {
+//				System.out.print(".");
+//				}
+//			System.out.println();
+//			}
+//		}
+//		
 		
 		
 		
 		
 		
 	}
+
+
+
 }
-
-
 
 		

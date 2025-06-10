@@ -108,19 +108,21 @@ public class ArrayQuizExam03 {
 	
 	
 	
+//		for (int i =1; i <5; i++) {
+//			for(int b= 1; b<5; b++) {
+//				System.out.print(i);
+//				System.out.println(b);
+//			}
+//		}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		for(int i= 2; i < 10;i++ ){
+			for(int a = 1 ; a < 10; a++) {
+				System.out.println();
+				System.out.print(i+"x"+a+"="+(i*a));
+			}
+		}
+
 	
 	
 	
