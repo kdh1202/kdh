@@ -117,7 +117,7 @@ public class TypeCastingExam03 {
 		
 		
 		
-		//회식비 54234.5원 
+		//회식비 65234.5원 
         //참석인원 6명   인당 
         //이떄 인당 얼마 내야하는가
         //1 . 디테일하게 원단위 까지
@@ -125,8 +125,8 @@ public class TypeCastingExam03 {
 		//3 / 2번처럼 받으면 주최자는 얼마를 내냐
 		
 		
-	/*	
-		double table = 7.4235;
+		
+		double table = 6.5234;
 		int human = 6;
 		double sal  =  table / human;
 		System.out.println(sal*10000);
@@ -136,7 +136,7 @@ public class TypeCastingExam03 {
 		
 		double sal3 =  table -(human-1) * sal2;
 		System.out.println(sal3*10000);
-	*/	
+		
 		
 		
 		

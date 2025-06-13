@@ -111,12 +111,12 @@ public class S {
 //		2, -3
 //		"오늘 온도는 영하 3도 입니다. 어제보다 5도 낮습니다" 
 		
-		int today = 3;
-		int yesterday = -2;
+		int today = -3;
+		int yesterday = -5;
 		if (today < yesterday ) {
 			System.out.println("오늘온도는"+today +"입니다"+"어제보다"+(today-yesterday)+"낮습니다");
 		} else if (today > yesterday ) {
-			System.out.println("오늘온도는"+today +"입니다"+"어제보다"+(today-yesterday)+"놉습니다");
+			System.out.println("오늘온도는"+today +"입니다"+"어제보다"+(today-yesterday)+"높습니다");
 		}
 		
 		
@@ -124,9 +124,9 @@ public class S {
 //		변수에 두자리 숫자(10~99)가 있을 때
 //		10의 자리와 1의 자리가 같은 수인지 판단
  
-		int asd=33;
+		int asd=11;
 		if ( asd%11 ==0) {
-			System.out.println("좆같은수");
+			System.out.println("같은수 ");
 		}
 		else {
 			System.out.println("아닌수");
@@ -134,9 +134,21 @@ public class S {
 		
 //		문제 9번.
 //		사각형의 한쪽 모서리 x1:10, y1:20
-//		대각선 모서리       x2:90, y2:100
+//		대각선 모서리       	x2:90, y2:100
 ////		이럴 때 새로운 점 x3, y3는 사각형에 포함되는가?
 	     
+	int x1 = 10;
+	int y1 = 20;
+	
+	int x2 = 90;
+	int y2 = 100;
+	
+	int x3 = 0;
+	int y3 = 0;
+	
+		if(x1 < x2 && x3 ==(x1/x2)) {
+			System.out.println(x3);
+		}
 	
 		
 	}
