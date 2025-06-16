@@ -7,7 +7,7 @@ public class Fruit {
 	int price;		//가격
 	int stock;		//재고
 	
-	
+	3+4
 
 	
 	

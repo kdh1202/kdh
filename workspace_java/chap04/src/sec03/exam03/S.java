@@ -143,13 +143,36 @@ public class S {
 	int x2 = 90;
 	int y2 = 100;
 	
-	int x3 = 0;
-	int y3 = 0;
+	int x3 = 15;
+	int y3 = 30;
 	
-		if(x1 < x2 && x3 ==(x1/x2)) {
-			System.out.println(x3);
-		}
 	
+		if(x1 <= x3  && x2 >= x3 ) {
+			if(y1 <= y3 &&  y2 >= y3) {
+				System.out.println("포함");
+			}
+		} else {
+			System.out.println("포함 되지 않는다 ");
+		};
+		
+		String gg = "+";
+		String ff = ".";
+		
+		
+	 for(int i =1;  i<=5; i++) {
+		 System.out.println(i);
+	 }
+	 for(int i =1;  i<=5; i++) {
+		 System.out.print(gg);
+	 }
+	 System.out.println();
+	 for(int i =1;  i<=5; i++) {
+		 System.out.print(gg+ff);
+	 }
+	 
+	 
+	 
+		
 		
 	}
 

@@ -104,16 +104,16 @@ public class FruitMarket {
 			// 메소드이름 :addFruit
 			// 전달인자   :Fruit
 			// 리턴 타입  : void
-		}
 		
-			int ask2 (String fruitName) {
-				// 전체 과일중에서
-				for (int i =0; i < fruits.length; i++) {
-					// 전달받은 이름과 같은게 있다면
-					if (this.fruits[i].equals(fruitName)) {
-						//가격을 돌려줘라
-						return this.fruits[i].price;
-					}
+		
+//			int ask2 (String fruitName) {
+//				// 전체 과일중에서
+//				for (int i =0; i < fruits.length; i++) {
+//					// 전달받은 이름과 같은게 있다면
+//					if (this.fruits[i].equals(fruitName)) {
+//						//가격을 돌려줘라
+//						return this.fruits[i].price;
+//					}
 //				void addFruit(Fruit fruit) {
 ////			//기존것의 마지막에 하나추가
 //					this.fruit
@@ -124,11 +124,10 @@ public class FruitMarket {
 //							new
 //						}
 //						
-				}
+//				}
 			}
 			
 			}
+	
 		
 		
-		
-}

@@ -1,5 +1,9 @@
 package sec05.exam02_static;
 
+import java.util.ArrayList;
+
+//import java.util.ArrayList;
+//import java.util.*;
 public class CalcExam {
 
 	int a =0; // 여기서 선언해서 static 안에서 사용할수없다
@@ -7,8 +11,8 @@ public class CalcExam {
 	public static void main(String[] args) {
 		
 		
-		
-		
+//		java.util.ArrayList list = new  java.util.ArrayList(); 길어서 안씀
+//		ArrayList list = new ArrayList ();
 		
 // 여기서 Calc 는    왜 되냐? 
 		System.out.println("c1.pi : "+ Calc.pi);
@@ -33,8 +37,29 @@ public class CalcExam {
 		
 //		System.out.println("Calc.pi : "+ Calc.pi);
 //		이렇게 쓰라는거다 
+		System.out.println(Math.PI);
+	
+//		2 test 메소드 사용하기 
+	
 		
-		
-	}
+		Calc ce =new Calc();
 
+		
+		
+	// 메소드명 test 만들기
+	// 전달인자 리턴타입 없음
+	}	
+	// 아무말이나 출력
+	
+	
+	static  void test(){
+		System.out.println("아무말");
+	}
+	
+	
+	
+	
+	
+	
+	
 }

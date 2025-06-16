@@ -10,7 +10,7 @@ public class FruitMarketExam {
 		System.out.println("토마토가격은? "+price);
 		
 		Fruit fruit = new Fruit();
-		market.addFruit(null);
+//		market.addFruit(null);
 		
 		
 	}
