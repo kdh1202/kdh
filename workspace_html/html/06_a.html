@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <a href="#bottom"> 맨아래 </a>
+
+    <p id="top">
+        id top 자리
+    </p>
+
+    <a href="http://naver.com"> 네이버</a>
+    <br>
+    <a href="http://google.com" target="_blank">구글</a>
+    <br>
+    <a href="https://comic.naver.com/webtoon/detail?titleId=807019&no=1&week=wed" target="_blank">
+        <img src="https://image-comic.pstatic.net/webtoon/751168/thumbnail/thumbnail_IMAG21_db791b21-1a43-4a47-bfe4-09f504e0c246.jpg"
+            alt="상남자">
+    </a>
+    <br>
+    <!-- 상대 주소 -->
+     <!-- 
+         내위치를 기준으로 삼는 주소
+        .  :내 폴더
+        .. :부모 폴더
+        가장 마지막의 / 이후의 주소를 갈아 치운다
+         -->
+    <a href="test/sample.html">test/sample.html</a>
+    <br>
+    <a href="./test/sample.html">./test/sample.html</a>
+    <br>
+
+    <!-- 절대 주소 -->
+    <!-- 
+    
+        1. 프로토콜(http)로 시작하거나
+        2.//로 시작하거나 (http://)
+        3./로 시작하는거
+        3-0. 주소체계랑 ip:port/주소들
+        3-1. ip:port 다음 나오는 /를 기준으로 주소로한다
+
+        -->
+     <a href="http://naver.com"> 네이버</a>
+      <a href="//naver.com"> //네이버</a>
+    <br>
+    <!-- http://127.0.0.1:5500/html/06_a.html -->
+    <a href="/html/06_a.html">/html/06_a.html </a>
+    <a href="/html/test/sample.html">/html/test/sample.html </a>
+
+
+    <!-- 앞에 127.0.0.1 은 내컴퓨터를 뜻함 -->
+    <a href="tel:01023739184">전화걸기</a>
+    <p style="height: 1000px;">
+        첫문단
+    </p>
+    <a href="#top"> 맨위로 </a>
+    <strong id="bottom">
+        id bottom 자리
+    </strong>
+
+</body>
+
+</html>

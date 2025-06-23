@@ -1,0 +1,144 @@
+body {
+    border: 1px solid gold;
+    margin: 0px;
+}
+
+.first {
+    border: 1px solid black;
+    /* 
+    margin-top:50px;
+    margin-right:40px;
+    margin-bottom:30px;
+    margin-left:20px; */
+    /* margin 축약형  */
+    /* 4개 일떄 :top right bottom left */
+    margin: 50px 40px 30 px 20px;
+    /* 3개일 때  top  좌우 bottom*/
+    margin: 50px 30px 20px;
+    /* 2개 일때 위아래  좌우*/
+    margin: 30px 20px;
+    /* 1개 쓸떄 전방향 */
+    margin: 10px;
+
+
+
+    border-top-width: 3px;
+    /* border-top-style:dashed; */
+    border-top-style: dotted;
+    border-top-color: cadetblue;
+
+    border-right: 2px dashed red;
+
+    border: 1px solid black;
+
+    border-radius: 10px;
+
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-bottom: 50px;
+    padding-left: 5px;
+
+    /* padding도 margin처럼 4방향 축약 가능 
+        시계 방향으로 돈다 */
+
+    padding: 30px;
+
+    /* width, height 는 내용물(컨텐츠)의  너비와 높이*/
+    width: 50vw;
+    height: 200px;
+
+    /* 패팅+컨텐츠 까지만 칠해짐 */
+    background-color: blueviolet;
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+.second { 
+    /* 너비와 높이는 padding +border */
+    box-sizing:border-box;
+    /* 나머지는 .first를 복사 해왔다  */
+   
+   
+    border: 1px solid black;
+    /* 
+    margin-top:50px;
+    margin-right:40px;
+    margin-bottom:30px;
+    margin-left:20px; */
+    /* margin 축약형  */
+    /* 4개 일떄 :top right bottom left */
+    margin: 50px 40px 30 px 20px;
+    /* 3개일 때  top  좌우 bottom*/
+    margin: 50px 30px 20px;
+    /* 2개 일때 위아래  좌우*/
+    margin: 30px 20px;
+    /* 1개 쓸떄 전방향 */
+    margin: 10px;
+
+
+
+    border-top-width: 3px;
+    /* border-top-style:dashed; */
+    border-top-style: dotted;
+    border-top-color: cadetblue;
+
+    border-right: 2px dashed red;
+
+    border: 1px solid black;
+
+    border-radius: 10px;
+
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-bottom: 50px;
+    padding-left: 5px;
+
+    /* padding도 margin처럼 4방향 축약 가능 
+        시계 방향으로 돈다 */
+
+    padding: 30px;
+
+    /* width, height 는 내용물(컨텐츠)의  너비와 높이*/
+    width: 50vw;
+    height: 200px;
+
+    /* 패팅+컨텐츠 까지만 칠해짐 */
+    background-color: blueviolet;
+}
+.profile img{
+    border:1px solid black;
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+}
+.chat-left{
+    border: 1px solid black;
+    background-color: yellow;
+    width: 100px;
+    text-align: center;
+    padding:5px;
+    margin:10px;
+
+    border-radius: 0 10px 10px 10px;
+}
+.third{
+    border:1px solid black;
+    width:70%;
+    min-width:500px;
+    max-width:600px;
+}
