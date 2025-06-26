@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        article img {
+            border: 1px solid black;
+            float: left;
+            width: 200px;
+        }
+
+        .box {
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+
+        .box.left {
+            float: left;
+            border: 1px solid red;
+        }
+
+        .box.right {
+            /* position: relative;
+            left:5px; */
+            float: right;
+        }
+
+        .d2 {
+            /* width: 100%; */
+            background-color: bisque;
+        }
+
+        .d1 {
+            background-color: rgba(0, 0, 255, 0.11);
+        }
+
+        .d3 {
+            background-color: rgb(46, 211, 211);
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background-color: burlywood;
+            /* margin:auto; */
+            display: inline-block;
+
+        }
+        .menu{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <img src="//thumbnail6.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/2023/11/24/10/5/3cbd38b5-70cd-4815-b417-35de7bb1b02a.jpg"
+            alt="스폰지밥 아크릴 팝톡, 뚱이, 1개">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit reprehenderit reiciendis minima ratione commodi
+        aspernatur corrupti nam consequatur dicta, consectetur, sed eligendi aliquid esse? Recusandae itaque nisi atque
+        esse officiis!
+    </article>
+    <div style="clear: both;"></div>
+
+    <div class="box left">1</div>
+    <div class="box left">2</div>
+    <div class="box right">3</div>
+    <div class="box right">4</div>
+    <div style="clear: both;"></div>
+
+
+    <!-- <div>글씨 몇개</div> -->
+
+    <!-- <div style="overflow:hidden"> -->
+    <div>
+        <div class="box d1 left">d1</div>
+        <div class="box d2 right">d2</div>
+        <div class="clear"></div>
+    </div>
+    <div class="d3">d3</div>
+
+
+
+
+    <div class="clearfix">
+        <div class="box d1 left">d11</div>
+        <div class="box d2 right">d12</div>
+    </div>
+    <div class="d3">d3</div>
+    <div>글씨 몇개</div>
+
+    <div class="clearfix menu">
+
+        <div class="box left">왼쪽 메뉴</div>
+        <div class="logo">가운데 메뉴</div>
+        <div class="box right">오른쪽 메뉴</div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

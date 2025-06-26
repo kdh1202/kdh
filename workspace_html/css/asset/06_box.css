@@ -67,12 +67,12 @@ body {
 
 
 
-.second { 
+.second {
     /* 너비와 높이는 padding +border */
-    box-sizing:border-box;
+    box-sizing: border-box;
     /* 나머지는 .first를 복사 해왔다  */
-   
-   
+
+
     border: 1px solid black;
     /* 
     margin-top:50px;
@@ -119,26 +119,70 @@ body {
     /* 패팅+컨텐츠 까지만 칠해짐 */
     background-color: blueviolet;
 }
-.profile img{
-    border:1px solid black;
+
+.profile img {
+    border: 1px solid black;
     width: 200px;
     height: 200px;
 
     border-radius: 50%;
 }
-.chat-left{
+
+.chat-left {
     border: 1px solid black;
     background-color: yellow;
     width: 100px;
     text-align: center;
-    padding:5px;
-    margin:10px;
+    padding: 5px;
+    margin: 10px;
 
     border-radius: 0 10px 10px 10px;
 }
-.third{
-    border:1px solid black;
-    width:70%;
-    min-width:500px;
-    max-width:600px;
+
+.third {
+    border: 1px solid black;
+    width: 70%;
+    min-width: 500px;
+    max-width: 600px;
 }
+
+/* 
+    마진 중첩  
+    세로 방향으로 붙어 있을 때 또는 부모와 첫번째 자식 간에 
+    margin이 더해지지않고 큰 값 하나만 적용되는 현상
+*/
+/* 해법
+    border,padding 등 적용
+    컨텐츠 적기 <br>
+   부모에 overflow: hidden 주기
+*/
+#div1,
+#div2,
+#div3 {
+
+    /* border: 1px solid black; */
+
+    /* padding: 1px; */
+    overflow: hidden;
+}
+
+#div2,
+#div3 {
+    /* margin: 30px */
+    /* margin-top: 1px; */
+    margin: 30px
+}
+
+#div3 {
+    margin: 50px;
+}
+
+#div1 {
+    margin: 30px;
+} 
+#auto{
+    border: 1px solid black;
+    width: 100px;
+    margin: 0 auto;
+}
+ 
