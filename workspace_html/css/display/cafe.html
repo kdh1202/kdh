@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .all {
+            /* 전체*/
+            width: 800px;
+            height: 1200px;
+            margin: 0 auto;
+        }
+
+        .all1{
+            padding: 10px;
+            width: 67%;
+            display: inline-block;
+            border: 1px solid gray;
+            
+        
+
+        }
+        .all2 {
+            padding-left: 15px;
+            width: 67%;
+            display: inline-block;
+
+        }
+
+        .aa {
+            width: 100%;
+            display: inline-block;
+
+        }
+
+
+        .a1,
+        .bb {
+            /* 네이버 */
+            display: inline-block;
+        }
+
+        .box1 {
+            margin-left: auto;
+            float: right;
+            display: inline-flex;
+            text-decoration: none;
+            overflow: hidden;
+            white-space: nowrap;
+
+        }
+
+        .a2 {
+            height: 150px;
+            display: block;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .c {
+            font-size: 13px;
+            line-height: 40px;
+            display: block;
+            position: static;
+            width: 100%;
+            height: 80%;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .d {
+            height: 20%;
+            font-size: 50%;
+            width: 100%;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+             border-bottom:1px solid gray;
+
+        }
+
+        .cafedata , .action {
+            display: inline-block;
+            text-align: center;
+            width: 45%;
+        }
+
+
+        .cafe {
+            width: 27%;
+            display: block;
+            float: left;
+            margin-top: -163px;
+            /* 사진  */
+              /* border:1px solid gray; */
+
+        }
+
+        .cafe1 {
+            width: 30%;
+            display: block;
+            float: left;
+            border-bottom:1px solid gray;
+
+        }
+
+
+        .button {
+            width: 100px;
+        }
+
+        .box2 {
+            /* word-wrap: break-word; */
+            margin: 10px
+        }
+
+        .font1 {
+            font-size: 10px;
+        }
+
+        .font2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .ka {
+            width: 100%;
+            display: inline-block;
+              border-bottom:1px solid gray;
+              padding-top:10px;
+        }
+
+        .img1,
+        .img {
+            /* border: 1px solid black; */
+            width: 47%;
+            height: 100px;
+            display: inline-block;
+        }
+
+
+        .ka1 {
+            /* border: 1px solid black; */
+            width: 47%;
+            display: inline-block;
+            height: 100px;
+            vertical-align: top;
+        }
+
+        .name {
+            /* border: 1px solid black; */
+            width: 97%;
+            display: inline-block;
+            font-size: 10px;
+            margin-top: 1px;
+            height: 27px;
+        }
+
+        .year {
+            /* border: 1px solid black; */
+            width: 97%;
+            height: 27px;
+            display: inline-block;
+            font-size: 10px;
+        }
+
+        .intro {
+            /* border: 1px solid black; */
+            width: 97%;
+            height: 27px;
+            display: inline-block;
+            font-size: 10px;
+        }
+
+        .step {
+            font-size: 15px;
+
+        }
+
+        .member {
+            width: 100%;
+        }
+
+        .member1 {
+            width: 47%;
+            display: inline-block;
+            font-size: 10px;
+
+        }
+
+        .member2 {
+            width: 47%;
+            display: inline-block;
+            text-align: right;
+            font-size: 10px;
+        }
+
+        .join {
+            background-color: rgb(71, 69, 69);
+            border-radius: 3px;
+            height: 30px;
+            text-align: center;
+        }
+
+        .aaa {
+            color: white;
+        }
+
+        .chat {
+            border: 1px solid black;
+            background-color: white;
+            border-radius: 3px;
+            height: 30px;
+            text-align: center;
+            margin-top:6px
+        }
+
+        .aad:hover,
+        .aaa:hover {
+            text-decoration: underline;
+        }
+
+        .aad {
+            color: black;
+        }
+
+        .cc {
+            height: 100%;
+            background-color: green;
+            border-radius: 3px;
+            padding-bottom: 10px;
+            font-size: 10px;
+        }
+
+        .ccc {
+            height: 20px;
+            width: 17%;
+            border-radius: 3px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .dd {
+            display: flex;
+            align-items: center;
+            margin-top:5px;
+        }
+
+        .box3 {
+            font-size: 12px;
+            padding-left: 5px;
+        }
+
+        .al1 {
+            padding-left: 5px;
+        }
+
+        .b1 {
+            text-align: center;
+            padding-top: 10px;
+        }
+        .bo{
+            display: inline-block;
+        }
+        .bp{
+            display: block;
+            float:right
+        }
+        .qq{
+            border-bottom:1px solid gray;
+            font-size: 12px;
+        }
+        .ww{
+            display: inline-block;
+        }
+        .ee{
+            display: block;
+            float:right;
+            width: 70px;
+            font-size: 13px;        
+        }
+        .all3{
+            border-bottom:1px solid black;
+        }
+        .c3{
+            border-bottom:1px solid gray;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .c4{
+             border-bottom:2px solid black;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <div>
+
+            <div class="aa">
+                <div class="a1"><a href="https://www.naver.com/">
+                        <img src="https://ssl.pstatic.net/static/cafe/icon_naver_190423.png" width="52" height="10"
+                            alt="NAVER">
+                    </a></div>
+                <div class="box1">
+                    <div class="box"><a href="https://section.cafe.naver.com/ca-fe/home"><span>카페홈 </span></a></div>
+                    <div class="box"><a href="https://cafe.naver.com/ca-fe/home/town/talks">| 이웃 </a> </div>
+                    <div class="box">| 가입카페</div>
+                    <div class="box"><a href="https://section.cafe.naver.com/ca-fe/home/feed">| 새글</a></div>
+                    <div class="box">| 내소식</div>
+                    <div class="box">| 채팅</div>
+                    <div class="box"><a href="https://nid.naver.com/nidlogin.login">| <button>로그인</button></a></div>
+                </div>
+            </div>
+            <div class="a2">
+                <!-- <div class=""></div> -->
+                <div class="c">
+                    <h1>JAVA(자바)활용 스마트팩토리 MES 웹 솔루션 개발자<br> 250512</h1>
+                </div>
+                <div class="d">http://cafe.naver.com/human9class250512</div>
+            </div>
+        </div>
+       
+        <div class="cafe1">       
+            <div class="cafedata"><a> 카페 정보</a></div>
+            <div class="action"><a> 나의 활동</a></div>
+        </div>
+
+        <div class="all1">
+            <div class="box2 font1"><span>게시글 및 첨부 파일명은 띄어 쓰기 없이 다음과 같이 작성해주세요</span></div>
+            <div class="box2 font2"><span><b>게시판명-이름</b></span></div>
+            <div class="box2 font2"><span><b>게시판명-캡쳐-이름</b></span></div>
+            <div class="box2"><b>화면 캡쳐:win + shift + s</b> <span>로 범위 지정 후 그림판에 붙여넣기</span></div>
+        </div>
+
+        <div class="cafe">
+            <div class="ka">
+                <div class="img1"><img src="./11212.png" width="110px;"> </div>
+                <div class="ka1">
+                    <div class="name">강사 최민수</div>
+                    <div class="year">2025.05.13 개설</div>
+                    <div class="intro">카페소개</div>
+                </div>
+            </div>
+            <div class="step"><a href=""><img src=112.png width="20px;" style="vertical-align: middle;">씨앗3단계</a></div>
+            <div class="member">
+                <div class="member1"><a href=""><img src="화면 캡처 2025-06-30 182205.png" style="vertical-align: middle; ">
+                        20 <img src="./화면 캡처 2025-06-30 182217.png" style="vertical-align: middle;"> </a></div>
+                <div class="member2"><a href="">초대</a></div>
+            </div>
+            <div class="b2">
+                <div class="join"><a class="aaa" href="" style="vertical-align: middle;"> <span>카페 가입하기</span> </a>
+                </div>
+                <div class="chat"><a class="aad" href="" style="vertical-align: middle;"> <span>카페 채팅</span> </a> </div>
+            </div>
+            <div class="dd"><input type="text" style="margin-top:7px">
+                <div class="ccc"> <button class="cc">검색</button> </div>
+            </div>
+            <div class="box3"> <img src="./화면 캡처 2025-07-01 090911.png" style="vertical-align: middle;">
+                <span>전체글보기</span> </div>
+            <div class="box3 c3"> <img src="./화면 캡처 2025-07-01 090922.png" style="vertical-align: middle;"><span>인기글</span>
+            </div>
+            
+            <div class="box3 c3"><img src="./화면 캡처 2025-07-01 090911.png"
+                    style="vertical-align: middle;"><span>자유게시판</span></div>
+          
+            <div class="box3 c3"><strong> 제출물</strong></div>
+            <div class="box3"><img src="./화면 캡처 2025-07-01 090911.png" style="vertical-align: middle;"> <span>02.생산관리
+                    프로그래밍기초 (JAVA) - 평가지</span></div>
+            <div class="box3 c3"><img src="./화면 캡처 2025-07-01 090911.png" style="vertical-align: middle;"> <span>02.생산관리
+                    프로그래밍기초 (JAVA) - 과제</span></div>
+            
+            <div class="box3 c3"><strong><span>이전 제출물</span></strong></div>
+            <div class="box3"><img src="./화면 캡처 2025-07-01 090911.png" style="vertical-align: middle;"> <span>01.생산관리
+                    Database(Oracle) - 평가지</span></div>
+            <div class="box3 c4"><img src="./화면 캡처 2025-07-01 090911.png" style="vertical-align: middle;"> <span>01.생산관리
+                    Database(Oracle) - 과제</span></div>
+            
+            <div class="al1">
+                <div class="box3 "><strong><span>최신댓글 · 답글</span></strong></div>
+                <div class="box3 b1"><span>최근 댓글 · 답글이
+                        <br>없습니다.</span></div>
+            </div>
+            <div class="box3 b1"><img src="https://ssl.pstatic.net/static/cafe/banner_chatbot.png" width="230"
+                    height="55" alt="궁금한게 있을 땐 카페 스마트봇"></div>
+
+        </div>
+        <div class="all2">
+            <div class="all3">
+                <div class="bo" ><b><span>전체글보기</span></b></div>
+                <div class="bp">더보기 </div>
+            </div>
+            
+            <div class="all4">
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+                <div class="qq c3">
+                    <div class="ww"> · 02.생산관리</div>
+                    <div class="ee">2025.06.17 </div>
+                    <div class="ee"> 떙떙떙</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

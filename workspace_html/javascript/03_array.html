@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 배열은 변수의 집합
+        // 한번에 몽땅 만들어서 index 로 관리할 수 있는 변수의 집합
+
+        // 배열 변수를 만드는 가장 쉬운 방법
+        let arr = [];
+        //두번쨰 방법
+        let arr2 = new Array();
+
+        //값을 미리 알고 있을 때
+        arr =[1,'2',3];
+        arr = new Array(1,2,3);
+
+        console.log('arr[0] :' , arr[0]);
+        arr[0] = 10;
+        console.log('arr[0] :' , arr[0]);
+
+        console.log(arr)
+        console.log('arr :', arr);
+        console.log('arr :'+ arr);
+
+
+        arr[10] = 10;
+        console.log('arr :', arr);
+        console.log('arr[20]',arr[20]);
+
+        //index 에는 변수가 올수있고
+        // js 의 변수는 아무거나 넣을수 있음
+        arr["name"] = "민수";
+        console.log('arr :' , arr);
+        console.log('arr :' , arr["name"]);
+
+
+        console.log("arr :", arr.length);
+
+        const str ='휴먼교육센터';
+        console.log('str[0] :', str[0]);
+
+        for(let i = 0; i < str.length; i++){
+            console.log(str[i])
+        }
+
+        
+        let 가수 = ['아이유','카더가든','로시','허각','임한별'];
+        let 종류 =['발라드', '댄스','힙합', ];
+        let 음악 =[가수, 종류];
+
+        for(let i=0; i<음악.length; i++){
+            for(let j=0; j<음악[i].length; j++){
+                console.log(음악[i][j])
+            }
+        }
+
+        arr = [10,2,3,4];
+        
+        // js 에서는 배열을 ArrayList 처럼 메소드 사용하기
+
+
+        // 마지막에 하나 추가
+        arr.push(5)
+        console.log(arr)
+
+        
+        //맨처음에 하나 추가 
+        arr.unshift(0)
+        console.log(arr)
+
+
+        // 맨앞에 하나 뺴서 돌려주기
+        // 원본이 바뀜
+        let shift =arr.shift();
+        console.log(arr)
+        console.log('shift :',shift)
+        
+
+        // 맨 마지막 것 하나 뺴서 돌려주기
+        let pop =arr.pop();      
+        console.log(arr)
+        console.log('pop :',pop)
+        
+        arr.reverse();
+        console.log(arr);
+        
+        arr = [5,7,2,6,3,8,4];
+        arr.sort();
+        console.log(arr);
+        
+        arr = [5,7,2,6,3,8,4];
+        arr.sort(function(x,y){
+            return y - x
+        });
+        console.log(arr);
+
+
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

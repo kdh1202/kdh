@@ -68,7 +68,7 @@
             /* cross 축의 중앙 방향 */
             /* align-items: center; */
 
-            flex-wrap: wrap;
+            /* flex-wrap: wrap; */
             /*  여러줄에 대한 cross 축의 이야기*/
             /* 기본값, 각 줄의 높이를 꽉 채운 상태 */
             /* align-content: stretch; */
@@ -78,7 +78,7 @@
             /* align-content: space-between; */
             /* align-content: space-evenly; */
 
-            
+
 
 
 
@@ -90,22 +90,25 @@
             border: 1px solid tomato;
             background-color: cornflowerblue;
             color: white;
-
-            width: 200px;
+            width: 50px;
 
         }
     </style>
 </head>
 
+    <!-- flex-grow 남은 공간을 없애서 item을 키우는 기술 
+     기본 값 :0
+     남은 공간 의 너비를 모든 flex-grow의 값으로 나눠서  -->
 <body>
     <div class="flex-container">
-        <div class="flex-item">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item">5</div>
+        <div class="flex-item" style=flex-shrink:0; >1</div>
+        <div class="flex-item" style="order: 1;">2</div>
+        <div class="flex-item" style="order:-1;">3</div>
+        <div class="flex-item" style="flex-grow: 1; flex-shrink: 4;">4</div>
+        <!-- <div class="flex-item">4</div> -->
+        <div class="flex-item" style="flex-grow: 3;  flex-shrink: 2;">5</div>
+        <!-- <div class="flex-item">5</div> -->
     </div>
-
 </body>
 
 </html>
