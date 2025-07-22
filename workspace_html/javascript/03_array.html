@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,51 +15,51 @@
         let arr2 = new Array();
 
         //값을 미리 알고 있을 때
-        arr =[1,'2',3];
-        arr = new Array(1,2,3);
+        arr = [1, '2', 3];
+        arr = new Array(1, 2, 3);
 
-        console.log('arr[0] :' , arr[0]);
+        console.log('arr[0] :', arr[0]);
         arr[0] = 10;
-        console.log('arr[0] :' , arr[0]);
+        console.log('arr[0] :', arr[0]);
 
         console.log(arr)
         console.log('arr :', arr);
-        console.log('arr :'+ arr);
+        console.log('arr :' + arr);
 
 
         arr[10] = 10;
         console.log('arr :', arr);
-        console.log('arr[20]',arr[20]);
+        console.log('arr[20]', arr[20]);
 
         //index 에는 변수가 올수있고
         // js 의 변수는 아무거나 넣을수 있음
         arr["name"] = "민수";
-        console.log('arr :' , arr);
-        console.log('arr :' , arr["name"]);
+        console.log('arr :', arr);
+        console.log('arr :', arr["name"]);
 
 
         console.log("arr :", arr.length);
 
-        const str ='휴먼교육센터';
+        const str = '휴먼교육센터';
         console.log('str[0] :', str[0]);
 
-        for(let i = 0; i < str.length; i++){
+        for (let i = 0; i < str.length; i++) {
             console.log(str[i])
         }
 
-        
-        let 가수 = ['아이유','카더가든','로시','허각','임한별'];
-        let 종류 =['발라드', '댄스','힙합', ];
-        let 음악 =[가수, 종류];
 
-        for(let i=0; i<음악.length; i++){
-            for(let j=0; j<음악[i].length; j++){
+        let 가수 = ['아이유', '카더가든', '로시', '허각', '임한별'];
+        let 종류 = ['발라드', '댄스', '힙합',];
+        let 음악 = [가수, 종류];
+
+        for (let i = 0; i < 음악.length; i++) {
+            for (let j = 0; j < 음악[i].length; j++) {
                 console.log(음악[i][j])
             }
         }
 
-        arr = [10,2,3,4];
-        
+        arr = [10, 2, 3, 4];
+
         // js 에서는 배열을 ArrayList 처럼 메소드 사용하기
 
 
@@ -66,7 +67,7 @@
         arr.push(5)
         console.log(arr)
 
-        
+
         //맨처음에 하나 추가 
         arr.unshift(0)
         console.log(arr)
@@ -74,36 +75,109 @@
 
         // 맨앞에 하나 뺴서 돌려주기
         // 원본이 바뀜
-        let shift =arr.shift();
+        let shift = arr.shift();
         console.log(arr)
-        console.log('shift :',shift)
-        
+        console.log('shift :', shift)
+
 
         // 맨 마지막 것 하나 뺴서 돌려주기
-        let pop =arr.pop();      
+        let pop = arr.pop();
         console.log(arr)
-        console.log('pop :',pop)
-        
+        console.log('pop :', pop)
+
         arr.reverse();
         console.log(arr);
-        
-        arr = [5,7,2,6,3,8,4];
+
+        arr = [5, 7, 2, 6, 3, 8, 4];
         arr.sort();
         console.log(arr);
-        
-        arr = [5,7,2,6,3,8,4];
-        arr.sort(function(x,y){
+
+        arr = [5, 7, 2, 6, 3, 8, 4];
+        arr.sort(function (x, y) {
             return y - x
         });
         console.log(arr);
 
+        // splice 
+        arr = [0, 1, 2, 3, 4, 5];
 
+        // splice(시작 index, count)
+        /*
+        원본에서 잘라서 돌려줌
+        만약 시작index가 음수면 뒤에서 부터 센다
+        시작index 만 전달하면 끝까지 잘라서 돌려줌
+        Ctrl + x 느낌
+        */
+        let s = arr.splice(2, 3)
+        console.log('arr', arr)
+        console.log('s', s)
 
+        arr = [0, 1, 2, 3, 4, 5];
+        // 뒤에서 3번째 부터 끝까지
+        s = arr.splice(-3);
+        console.log('arr', arr);
+        console.log('s', s);
 
+        arr = [0, 1, 2, 3, 4, 5];
+
+        s = arr.splice(1, 2, '하나', '둘', '셋');
+        console.log('arr', arr);
+        console.log('s', s);
+
+        arr = [0, 1, 2, 3, 4, 5];
+        let arr3 = [7, 8, 9];
+        arr.splice(2, 0, arr3[0], arr3[1], arr[2])
+        arr.splice(2, 0, ...arr3) // spread 연산자
+        // 배열을 펼쳐준다
+        console.log('arr:', arr)
+
+        // 시간 을 두자리로 
+        // 12시는 12
+        // 7시는 07시
+        // 시간에 무조건 앞에 0을 붙인다 
+        // 12 > 012, 7> 07
+        // 뒤에서 두자리를 자른다 
+        // splice(-2,2)
+
+        // slice
+        /*
+        원본은 유지하면서
+         시작 index 부터 끝 index 바로 앞까지를
+         복사해서 돌려주기
+         Ctrl + c 느낌 
+        */
+        arr = [0, 1, 2, 3, 4, 5];
+        s = arr.slice(2, 3);
+        console.log('arr', arr);
+        console.log('s', s);
+        
+
+        //  join
+        //  배열을 모두 글씨로 바꿔준다 
+        //  전달인자가 없는 경우 사이사이에 ',' 로 구분함
+        s = arr.join();   
+        s = arr.join('-');   
+        console.log('arr', arr);
+        console.log('s', s);
+        
+        // 문자열 함수 split
+        // 문자 중 구분자(전달인자)로 잘라서 배열로만들어줌
+        // 단, 구분자는 사라짐
+        let arr4 =s.split('-')
+        console.log( arr4);
+
+        // concat 배열합치기
+        let arr5 = arr.concat(arr4)
+        console.log(arr5)
+        
+        // tostring  글자로 만들어준다 
+        console.log(arr.toString())
     </script>
 
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

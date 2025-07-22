@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 200vh;
+        }
+        #top{
+            position:fixed;
+            right: 10px;
+            bottom: 10px;
+        }
+        #cho{
+            position:absolute;
+            top: 0;
+            left:0;
+        }
+    </style>
+
+    <script src="asset/js/12_event.js"></script>
+</head>
+<!-- <body onload= "javascript:init()"> -->
+<body>
+    <div style="display:flex">
+        <div>
+            <button type="button" id="btn1">버튼1</button><br>
+            <button type="button" id="btn2">버튼2</button><br>
+            <button type="button" id="btn3" onClick="btnClick();alert(1)">버튼3</button>
+            <div>
+                아이디  : <input type="text" id="id"><br>
+                비밀번호:<input type="password" id="pw"><br>
+                <br>
+                <input type="button" onclick='login()'  id="login" value="로그인">
+            </div>
+        </div>
+        <div id="console"></div>
+    </div>
+    <div>
+       <button type="button" id="top" >맨위로</button>
+    </div>
+    <img id="cho" src="/javascript/Nat7R8m76ArARjdLnZ6OPkbaleF62cjL6sFE5sNlIcrv7Jeyz62Rc14YqTn4Jrn8VOpokZl4Dp53a5mpxsBoKg.webp" width="200px"height=200px>
+</body>
+</html>

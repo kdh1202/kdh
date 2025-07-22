@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ddd {
+            border: 1px solid black;
+            /* cursor:pointer */
+        }
+
+        /* #q3{
+    display: inline-block;
+    color:green;
+    
+} */
+    </style>
+</head>
+
+<body>
+    <div id="name">
+        <input type="text" id="text">
+        <button id="btn">검색</button>
+    </div>
+    <span id="s"></span>
+
+    <br><br><br><br>
+
+
+    <div style="color:red; background-color: rgb(233, 233, 224);"><span>주문정보</span>
+        <br>
+        <input type="text" id='tx1'>
+        <br>
+        <input type="text" id='tx2'>
+        <br>
+        <input type="text" id='tx3'>
+    </div>
+
+    <input type="checkbox" id="checkbox">
+    <div style="color:rgb(211, 201, 67); background-color: rgb(245, 245, 220);">배송정보
+        <br>
+        <input type="text" id='tx11'>
+        <br>
+        <input type="text" id='tx12'>
+        <br>
+        <input type="text" id='tx13'>
+    </div>
+    <br><br><br>
+    
+    <div id="ddd">
+        <div id="q1"><input type="checkbox" value='1'>치킨 </div>
+        <div id="q2"><input type="checkbox" value='2'>피자 </div>
+        <div id="q3"><input type="checkbox" value='3'>햄버거 </div>
+        <div id="q4"><input type="checkbox" value='4'>삼계탕 </div>
+    </div>
+
+
+
+    <script>
+        // 1번문제
+        const s = document.querySelector('#s')
+        const t = document.querySelector('#text')
+        const q = document.getElementById('btn')
+
+        q.addEventListener('click', () => {
+            s.innerText += '\n' + t.value
+            // 복사 이동
+
+        })
+
+
+
+        // 2번
+        const tx1 = document.querySelector('#tx1')
+        const tx2 = document.querySelector('#tx2')
+        const tx3 = document.querySelector('#tx3')
+        const tx11 = document.querySelector('#tx11')
+        const tx12 = document.querySelector('#tx12')
+        const tx13 = document.querySelector('#tx13')
+        const checkbox = document.querySelector('#checkbox')
+        // tx 0[] = tx1 0[]
+
+        checkbox.addEventListener('click', function () {
+
+            if (checkbox.checked) {
+                tx11.value += tx1.value
+                tx12.value += tx2.value
+                tx13.value += tx3.value
+            } else {
+                tx11.value = ''
+                tx12.value = ''
+                tx13.value = ''
+            }
+        })
+
+        // 3번
+        const ddd = document.querySelector('#ddd div')
+        const q1 = document.querySelector('#q1')
+        const q2 = document.querySelector('#q2')
+        const q3 = document.querySelector('#q3')
+        const q4 = document.querySelector('#q4')
+
+        ddd.addEventListener('click', function (evt) {
+            console.log(evt.target)
+            // if(q1.checked){
+            //     console.log(q1)
+            // } else if(q2.checked){
+            //     console.log(q2)
+            // }else if(q3.checked){
+            //     console.log(q3)
+            // }else if(q4.checked){
+            //     console.log(q4)
+            // }
+            
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

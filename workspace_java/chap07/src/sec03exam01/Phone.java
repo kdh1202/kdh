@@ -1,0 +1,16 @@
+package sec03exam01;
+
+public abstract class Phone {
+
+	String owner;
+	Phone(String owner){
+		this.owner = owner;
+	}
+
+	
+	void turnOn() {
+		System.out.println("전원을 켭니다");
+	}
+	
+	
+}

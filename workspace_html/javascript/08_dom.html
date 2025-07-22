@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #view {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .big {
+            font-size: 2em;
+        }
+
+        [data-food=마라] {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">DOM 연습</h1>
+
+    <div id="view">첫번째 #view</div>
+    <div id="view">첫번째 #view</div>
+
+    <div class="div2">첫번째 .div2</div>
+    <div class="div2">첫번째 .div2</div>
+
+    <!-- css : #parent .div2-->
+    <div id="parent">
+        <!-- <div class="child div2">안쪽 .div2</div> -->
+        <!-- <div class="div2 child"></div>안쪽 .div2</div> -->
+        <div class="child div2" data-food="마라">안쪽 .div2</div>
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTnKq9TO4QuG5YCAPuQBNDwYKCdzbEmxmqjRFoNgwzWzra6Wr70jP6BYL7-FKcmqo_PVmjMRmWKymV265wmdh1OAA"
+            jsaction="" class="sFlh5c FyHeAf iPVvYb" style="max-width: 415px; width: 134px; height: 238px; margin: 0px;"
+            alt="Yu jimin karina aespa ! 🍎💧" jsname="kn3ccd">
+        <script>
+            // document : html 문서 전체를 뜻함
+
+            // getElementByid : 속성 id의 값을 이용해서
+            // 속성 id의 값을 이용해서 dom을 가져온다
+            let title = document.getElementById('title')
+            console.log(title)
+            console.log("" + title)
+
+
+            // 요소가 없는 경우 null
+            let test = document.getElementById('test')
+            console.log(test)
+
+
+            // id가 여러개인 경우 첫번째 DOM만 가져온다
+            let view = document.getElementById('test')
+            console.log(view)
+
+            // tag 명으로 DOM 찾기
+            // 일치하는 모든 DOM을 배열로 돌려준다
+            let divs = document.getElementsByClassName('div');
+            console.log(divs);
+
+            // 하나만 있어도 한 개 짜리 배열
+            let h1s = document.getElementsByClassName('h1');
+            console.log(h1s);
+            // 없어도 size가 0인 배열
+            let human = document.getElementsByClassName('human');
+            console.log(human);
+
+            let div2s = document.getElementsByClassName('div2')
+            console.log(div2s);
+
+            // ducument는 문제 전체에서~
+            let parent = document.getElementById('parent')
+            console.log(parent)
+            // 특정 DOM 안에서 찾기
+            let div2ss = parent.getElementsByClassName('div2')
+            console.log(div2ss)
+            // querySelector
+            // css 선택자를 이용할 수 있다
+            // 하나의 DOM만 돌려준다
+            // 여러개인 경우 처음 나온 DOM 하나만
+            // 없으면 null
+            let qs1 = document.querySelector('#parent .div2')
+            console.log(qs1)
+            console.log('-----------------------')
+
+            let qs2 = document.querySelector('.div2')
+            console.log(qs2)
+
+            console.log(document.querySelector('#div2'))
+
+            //querySelectorAll
+            // 배열로 돌려준다
+            // 없으면 size 0 배열
+            let qs3 = document.querySelectorAll('.div2')
+            console.log(qs3)
+
+            console.log(document.querySelectorAll('#div2'))
+
+            //class 속성 값 조작
+            let child = document.querySelector('#parent .div2')
+            // classList : class를 배열 형식으로 돌려줌
+            console.log(child.classList);
+
+            //add : class 값 추가
+            child.classList.add('blue');
+            child.classList.add('big');
+            //중복해서 추가되지 않는다
+            child.classList.add('big');
+
+            //remove : class 값 삭제
+            child.classList.remove('blue');
+            child.classList.remove('blue');
+
+            // toggle : 있으면 remove 해주고 없으면 add 해준다
+            child.classList.toggle('blue');
+            child.classList.toggle('blue');
+
+            let isBlue = child.classList.contains('blue');
+            console.log(isBlue)
+
+            // DOM.className : 모든 class를 문자로 돌려줌
+            console.log(child.className)
+            child.className = 'big'
+
+            if (isBlue) {
+                child.classList.remove('blue')
+            } else {
+                child.classList.add('blue')
+            }
+
+            let img = document.querySelector('img');
+
+            // 속석명이 있는 지 검사 
+            let isSrc = img.hasAttribute('src');
+            console.log('isSrc :', isSrc);
+
+            // 속성값 가져오기 
+            let src = img.getAttribute('src')
+            console.log('src :', src);
+
+            let src2 = img.getAttribute('src2')
+            console.log('src2 :', src2);
+
+
+            // setAttribute(속성명 , 속성값)
+            //  속성이 없으면 속성을 만들고
+            //  속성이 있으면 값을 덮어 쓴다 
+
+            img.setAttribute('data-human','1강의실')
+            img.setAttribute('data-human','10강의실')
+
+            setTimeout(function(){
+                img.setAttribute('src','https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/st/2024/10/29/29_970268_59877.jpg')
+            },3000)
+
+            // 속성 지우기 
+            img.removeAttribute('data-human')
+
+            img.remove()
+
+
+
+</script>
+
+</body>
+
+</html>

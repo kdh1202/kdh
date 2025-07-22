@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let str = '카메라 사고 사고 싶다';
+
+        console.log('str.length', str.length)
+
+        // indexOf
+        // 엄청 중요하다리
+        // 전달인자와 같은 글씨가 있는경우 
+        // 첫번째 만나는 요소의 첫 index를 돌려줌
+        // 동일한 글씨가 없을 경우 -1 을 돌려줌 
+        // 엄청 많이 사용됨 꼭 기억 할것
+
+        console.log(str.indexOf('사고'))
+        console.log(str.indexOf('캐논'))
+
+        // replace
+        // 첫번째 전달인자를 두번째 전달인자로 바꿔 줌
+        //  기본적으로 처음 만난것만 한번 바꿔줌
+        let str2 = str.replace('사고','소닉')
+        console.log(str)
+        console.log(str2)
+        
+        
+        let str3 = str.replace(/사고/g,'소닉')
+        console.log(str)
+        console.log(str3)
+        
+        // 시작, 끝 바로 앞
+        let str4 = str.substring(2,6);
+        console.log(str)
+        console.log(str4)
+        
+        //  시작 , 몇개
+        let str5 = str.substr(3,4);
+        console.log(str)
+        console.log(str5)
+
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

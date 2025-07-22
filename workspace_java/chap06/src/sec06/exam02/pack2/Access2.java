@@ -1,5 +1,6 @@
 package sec06.exam02.pack2;
-과천시 청약
+
+ 
 public class Access2 {
 
 

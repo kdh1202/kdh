@@ -13,12 +13,17 @@
                 console.log(i + 'x' + e + '=' + i * e);
         }
 
-        const temp = 32;
-        if(temp){
+        const temp = -3;
+        if (temp) {
             document.write('참')
-        }  else{
+        } else {
             document.write('거짓')
         }
+        // if(temp >= 0){
+        //     console.log("영상"+teml+'도입니다')
+        // }else {
+        //     console.log('영하'+$[temp*-1]+'도 입니다')
+        // }
         /*
         js 에서의
         참(true) 은 거짓 아닌것 
@@ -26,6 +31,140 @@
         거짓 : fales, 0, null, undefind, NaN
         */
 
+        console.log('--- 배열 배우고 다시 돌아옴 ---')
+
+        let arr = [10, 20, 30]
+        arr[10] = 100;
+        arr['주소'] = '천안시';  // length 의 영향 없음 , 유사 배열
+        console.log('arr.length:', arr.length)
+
+        // for in 
+        //  in 앞의 변수에 현재의 index를 저장 
+        console.log('arr', arr)
+        for (let index in arr) {
+            console.log('index:', index)
+            console.log('index:', arr[index])
+        }
+        // for of
+        //  of 앞의 변수에 현재의 값을 저장
+        // java의 향상된 for문
+        // index '주소'처럼 숫자가 아닌 index는 못가져옴
+        // 현재 몇번째 반복인지 알수없음 
+        let i = 0;
+        for (let obj of arr) {
+            console.log('obj:', obj, i++)
+        }
+        // console.log(arr[i++])
+
+
+
+
+        let array = [];
+        array[2] = '[1,1]';
+        array[3] = '[1,2]';
+        array[3] += '[2,1]';
+
+        if (array[4] == undefined) {
+            console.log('array[4]', array[4])
+        }
+
+        array[4] += 'abc'
+        console.log(array[4])
+
+        // 주사위 2개 합 별 조합
+
+        // let diceSum=[]
+        // for(let i = 1; 1<=6; i++){
+        //     for(let j=1; j<=6; j++){
+        //         if (diceSum[i+j] == undefined){
+        //             diceSum[i+j] += `[${i},${j}]`
+        //         } else{
+        //             diceSum[i+j] += `[${i},${j}]`
+        //         }
+        //     }
+        // }
+        // if (diceSum[i+j] == undefined){
+        //     diceSum[i+j] =''
+        // }
+        // diceSum[i+j] += `[${i},${j}]`
+
+        // console.log(diceSum)
+        // for( let i in diceSum){
+        //     console.log(i,diceSum[i])
+        // }
+
+        //  함수배우고 다시 
+        console.log('함수 배우고 다시 옴')
+
+        const arr3 = ['a1','b2','c3','d4']
+        // forEach : 각 항목별로 함수를 실행 할수있ㅇ음
+        // 함수의 전달인자 : 현재값 , 현재 index, 전베 배열
+        // return 없음
+        let r1 = arr3.forEach(function(element,index,array){ 
+            console.log('element:',element) // 이번값
+            console.log('index:',index)     // 이번 index
+            console.log('array:',array)     // 원본 배열
+            // console.log('d:',d)
+            console.log('--------------')
+        })
+        console.log('r1:',r1)
+
+        const movies=[
+            '노이즈','f1 더 무비','쥬라기 월드:새로운 시작','드래곤길들이기','엘리오'
+        ]
+
+        // map : 각 항목별로 함수를 실행 해서
+        //       return 값으로 구성된  새로운 배열을 돌려줌 
+        // 함수의 전달인자 : 현재값 , 현재 index, 전베 배열
+        let len3 = movies.map( function(el, i, arr){
+            console.log('element:',el) // 이번값
+            console.log('index:',i)     // 이번 index
+            console.log('array:',arr)     // 원본 배열
+            
+            console.log('element.length:',el.length) // 이번값
+            console.log('----------')
+
+            return el.length;
+        } );
+        console.log('len3 :',len3)
+
+        //  결국 다 같다 
+        // let len2 = movies.map( function(el) {
+        //     return el.length
+        // })
+        // let len2 = movies.map( (el)=> {
+        //     return el.length
+        // })
+
+        let len2 = movies.map( el=>el.length )
+
+
+
+        let len = movies.map( el => el.length )
+        console.log('len:',len)
+
+        let filtered = movies.filter( function(el, i, arr){
+            console.log('element:',el) 
+            console.log('index:',i)     
+            console.log('array:',arr)     
+            console.log('----------')
+
+            // let len = el.length;
+            // if(len > 4){
+            //     return true;
+            // } else {
+            //     return false;
+            // }
+
+            return el.length > 4;
+
+            });
+            console.log(filtered)
+
+            let filtered2 = movies.filter( e => e.length > 4 )
+            console.log('f2',filtered2) 
+
+            
     </script>
 </head>
 

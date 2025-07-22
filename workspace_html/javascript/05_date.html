@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let now = new Date(); //Thu Jul 03 2025 14:18:33 GMT+0900 (한국 표준시)
+            console.log(now)
+        
+            //년도
+            const y = now.getFullYear();
+            console.log('년 :',y) // 년도 나옴 2025
+
+            // 월
+            // 월은 0~11 까지 나옴 +1 해줘야함
+            const M = now.getMonth();
+            console.log('월 :',M)
+
+            // 일
+            const d = now.getDate();
+            console.log('일 :' ,d)
+
+            // 요일 (일요일 0   토요일 6 ) 으로 끝남 
+            const w = now.getDay();
+            console.log("요일 :" ,w)
+
+            // 시간 24시간 기준
+            const h = now.getHours();
+            console.log("시 :", h)
+
+            // 분
+            const m = now.getMinutes();
+            console.log('분 :',m)
+            //   초
+            const s = now.getSeconds();
+            console.log('초 :',s)
+
+            let iso = now.toISOString()
+            console.log(iso)
+
+            let a = iso.split('T')
+            console.log(a[0])
+            
+            
+            console.log(a[1].split('.')[0])
+            
+            // 1970년 부터  지금까지의  초 
+            let timestamp = now.getTime();
+            console.log(timestamp)
+
+
+            //  중요하다
+            let before = new Date().getTime();
+            for(let i = 0; i <100; i++){
+                console.log(i)
+            }
+            let after =new Date().getTime();
+            console.log('after - before', after - before)
+
+
+            // 우리나라 시간으로 변경 하는방법
+            //  여기서 시간은 내 컴퓨터 기준 시간 
+            let time = new Date();
+            console.log(time.toISOString())
+
+            time.setHours( time.getHours() + 9)
+            console.log(time.toISOString())
+
+
+    </script>
+</head>
+<body>
+
+    <div id="clock"></div>
+    <script>
+        
+        setInterval( function(){
+
+            let clock = new Date()
+            let bun = clock.getMinutes()
+            let cho = clock.getSeconds()
+            let text ='<strong>'+ bun+'분'+cho+'초</strong>'
+            
+            document.querySelector('#clock').innerHTML = text;
+        }),1000
+        
+
+
+    </script>
+</body>
+</html>

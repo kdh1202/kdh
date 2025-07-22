@@ -31,6 +31,8 @@ public class IfExam {
 			System.out.println("90 미만입니다");
 			System.out.println("B등급");
 			
+			
+			
 		}
 		
 		
@@ -209,7 +211,7 @@ public class IfExam {
 	
 //	int i = 10;
 //	if(i > 5 ) {
-		System.out.println("5보다 크다");
+//		System.out.println("5보다 크다");
 //	}
 //	if(i < 0 ) {
 	//	System.out.println("5보다 작다");
@@ -225,8 +227,9 @@ public class IfExam {
 	sum = sum +3;
 	sum = sum +4;
 	sum = sum +5;
- System.out.println("1~5의합:"+sum);
+	System.out.println("1~5의합:"+sum);
 	
+ 
 	 
 		
 	for (int i=1; i <=100; i++) {

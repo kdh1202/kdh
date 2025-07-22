@@ -1,0 +1,140 @@
+
+window.addEventListener('load', bind)
+function bind() {
+    document.querySelector('#keyword')
+        .addEventListener('focus', () => {
+            const keyword = document.querySelector('#keyword')
+            keyword.style.backgroundColor = 'gray';
+        })
+    document.querySelector('#keyword')
+        .addEventListener('blur', () => {
+            const keyword = document.querySelector('#keyword')
+            keyword.style.backgroundColor = '';
+        })
+    const keyword = document.querySelector('#keyword')
+
+    const r = parseInt(Math.random() * 256)
+    const g = parseInt(Math.random() * 256)
+    const b = parseInt(Math.random() * 256)
+    const a = Math.random()
+
+    keyword.style.backgroundColor = `rgba(${r},${g},${b},${a})`;
+
+
+
+    document.querySelector('#site')
+        .addEventListener('change', () => {
+
+            const value = document.querySelector('#site').value
+            console.log('change 이벤트 의 value', value)
+            const form = document.querySelector('#form')
+
+            if (value == 1) {
+                form.setAttribute('action', 'https://search.naver.com/search.naver')
+            } else if (value == 2) {
+                form.setAttribute('action', 'https://www.google.com/search?')
+            }
+        })
+    document.querySelector('#form')
+        .addEventListener('submit', (event) => {
+            // html 태그의 기본 (고유) 기능을 막아줌
+            event.preventDefault()
+
+            const value = document.querySelector('#keyword').value
+
+            if (value.trim().lengtsh < 2) {
+                alert('검색어는 두글자 이상')
+            } else {
+                // submit
+                document.querySelector('#form').submit();
+            }
+        })
+    // 컨트롤 c 금지
+    addEventListener('copy', (event) => {
+        event.preventDefault();
+        alert('복사금지')
+    })
+    // 컨트롤 x 금지
+    addEventListener('cut', (event) => {
+        event.preventDefault();
+        alert('복사금지')
+    })
+    //  드래그 방지
+    addEventListener('selectstart', (event) => {
+        event.preventDefault();
+    })
+
+
+
+    //  선생님 문제풀이
+    document.querySelector('[type=button').addEventListener('click', () => {
+        //  선택한 토핑의 값을 따로 출력
+        //  1. 선택한 토핑들을 가져오기
+        let topping = document.querySelector('#topping')
+
+        let chks = document.querySelectorAll('.chk')
+        for (let i = 0; i < chks.length; i++) {
+            // console.log(i,chks[i].checked)
+            if (chks[i].checked == true) {
+                console.log(chks[i].value)
+                //  2. 값을 출력
+                topping.innerText += chks[i].value + ','
+            }
+        }
+    })
+
+
+
+    // const chk = document.querySelectorAll('.chk')
+    // const to = document.querySelector('#to')
+    // const btn = document.querySelector('#btn')
+    // const chks = document.querySelector('.chk_all')
+
+
+    // btn.addEventListener('click',(c)=>{
+    //     const selected = [];
+    //     chk.forEach((c)=>{
+    //         if( c.checked){
+    //             selected.push(c.value)
+    //         } 
+    //     })
+    //     if(selected.length > 0){
+    //         to.innerHTML = '토핑:' + selected.join(',') 
+    //     } else {
+    //         to.innerHTML = '토핑없음'
+    //     }
+    // })
+        // 에로우 함수 사용시 this 는 여전히 window로 유지 된다  
+        document.querySelector('#parent').addEventListener('click',function(event){
+            console.log('부모 클릭')
+            
+            // event.target 이벤트가 발생한 DOM 의 위치 표시
+            console.log('event.target :',event.target)
+
+            // event.currentTarget 이벤트가 발생한 붙어 있는 (적용된) DOM
+            console.log('event.currentTarget : ',event.currentTarget)
+
+            // 이벤트 안에서 this 는
+            //  더이상 window가 아니다
+            // js 에서 this 는 뭔지 알고있을 때만 사용해라
+            console.log(this)
+            console.log(this === event.currentTarget)
+
+            // DOM.parentNode: 부모로 이동
+            console.log('event.target.parentNode:',event.target.parentNode)
+        })
+        // document.querySelector('#child1').addEventListener('click',function(event){
+        
+        //     // 전파방지
+        //     //  부모로 전달되는 이벤트 중지
+        //     // this 배우기 위해 주석처리
+        //     // event.stopPropagation()
+        //     console.log('자식1 클릭')
+            
+
+        // })
+            // window 객체를 가지고 있다 
+            // console.log('밖',this)
+            // console.log(this === window)
+
+}

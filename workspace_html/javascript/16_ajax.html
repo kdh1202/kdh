@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        window.addEventListener('load', bind);
+
+        function bind() {
+            document.querySelector('#btn1').addEventListener('click', function () {
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', 'https://jsonplaceholder.typicode.com/users');
+                xhr.send();
+                xhr.onload = function () {
+                    const data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    console.log(data[0].username);
+                }
+            });
+
+            document.querySelector('#btn2').addEventListener('click', function () {
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', 'http://humanjobs.co.kr');
+                xhr.send();
+                xhr.onload = function () {
+                    console.log(xhr.responseText);
+                }
+            });
+            document.querySelector('#btn3').addEventListener('click', function () {
+                const serviceKey = 'YOUR_SERVICE_KEY_HERE';
+                let url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst';
+                url += `? serviceKey = ${serviceKey}& numOfRows=1000 & pageNo=1 & dataType=JSON & base_date=20250714 & base_time=1400 & nx=63 & ny=100`;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', url);
+                xhr.send();
+                xhr.onload = function () {
+                    const data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                }
+            });
+
+            document.querySelector('#btn4').addEventListener('click', function () {
+                const serviceKey = 'YOUR_SERVICE_KEY_HERE';
+                let url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst';
+                url += `? serviceKey = ${serviceKey}& numOfRows=1000 & pageNo=1 & dataType=JSON & base_date=20250714 & base_time=0930 & nx=63 & ny=100`;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', url);
+                xhr.send();
+                xhr.onload = function () {
+                    const data = JSON.parse(xhr.responseText);
+                    const items = data.response.body.items.item;
+                    items.forEach(item => {
+                        if (item.baseTime === "1900") {
+                            console.log(item);
+                        }
+                    });
+                }
+            });
+            document.querySelector('#btn5').addEventListener('click', function () {
+                const serviceKey = 'YOUR_SERVICE_KEY_HERE';
+                let url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst';
+                url += `? serviceKey = ${serviceKey}& numOfRows=1000 & pageNo=1 & dataType=JSON & base_date=20250714 & base_time=0930 & nx=63 & ny=100`;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('get', url);
+                xhr.send();
+                xhr.onload = function () {
+                    const data = JSON.parse(xhr.responseText);
+                    const item = data.response.body.items.item;
+                    const tbody = document.querySelector('#tbody');
+                    tbody.innerHTML = ''; // 기존 내용 비우기
+                    item.forEach(i => {
+                        if (i.category == 'T1H') {
+                            tbody.innerHTML += `<tr><td>${i.fcstTime}</td><td>${i.fcstValue}</td></tr>`;
+                        }
+                    });
+                }
+            });
+            document.querySelector('#btn6').addEventListener('click', function () {
+                const url = 'https://jsonplaceholder.typicode.com/users';
+                const option = {
+                    method: 'get'
+                };
+                fetch(url, option)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            });
+
+            $('#btn7').off('click').on('click', function () {
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/users',
+                    type: 'get',
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    },
+                    complete: function () {
+                        console.log("완료");
+                    }
+                });
+            });
+
+            try {
+                console.log(1, '실행')
+                throw new Error('에러')
+                console.log(2, '여전히 실행중')
+            } catch (err) {
+                console.log(3, ' catch')
+                console.log(4, err)
+            } finally {
+                console.log(5, '무조건 실행')
+            }
+            console.log('여기')
+
+            $('#btn8').off('click').on('click', function () {
+                $.ajax({
+                    url: 'http://naver.com',
+                    type: 'get'
+                }).done(function (data) {
+                    console.log('성공')
+                    console.log(data)
+                }).fail(function (err) {
+                    console.log('실패')
+                    console.log('ERRor', data)
+                }).always(function () {
+                    console.log('무조건 실행')
+
+                })
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <button type="button" id="btn1">ajax 실행</button>
+    <button type="button" id="btn2">휴먼 잡스</button><br><br>
+    <button type="button" id="btn3">날 씨</button><br><br>
+    <button type="button" id="btn4">어제날씨</button><br><br>
+    <button type="button" id="btn5">선생님풀이</button><br><br>
+    <button type="button" id="btn6">fetch</button><br><br>
+    <button type="button" id="btn7">jQuery</button><br><br>
+    <button type="button" id="btn8">jQuery2</button><br><br>
+
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>시간</th>
+                    <th>온도</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+</body>
+
+</html>

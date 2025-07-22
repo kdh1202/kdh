@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  h1{
+    height: 100px;
+  }
+</style>
+</head>
+
+<body>
+
+  <div id="msg">
+    <span>원래 </span> 있던 글씨
+  </div>
+
+  <div id="tag">글씨였던것</div>
+  <table>
+    <tbody id="tbody2">
+      <!-- <tr>
+      <td> 첫칸 </td>
+    </tr> -->
+    </tbody>
+    <hr>
+
+  </table>
+  <table>
+    <tbody id="tbody3">
+      <!-- <tr>
+        <td>제목1</td>
+        <td>작성자1</td>
+      </tr>
+      <tr>
+        <td>제목2</td>
+        <td>작성자2</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <h1 id="h1">style 테스트</h1>
+
+
+  <script>
+    let msg = document.querySelector('#msg')
+    console.log(msg);
+
+    // textContent
+    // 컨텐츠 역역의 소스 중 text 만 그대로 가져온다 
+    msg.textContent
+    console.log('textContent :', msg.textContent);
+
+    // innerText
+    // 브라우저에 보이는 그대로 
+    // 브라우저가 계산을 끝내고 실제로 표시하는 내용  
+    console.log('innerText :', msg.innerText);
+
+    // innerHTML
+    // 컨텐츠 영역의 소스를 가져온다 
+    console.log('innerHTML:', msg.innerHTML);
+
+
+
+    // 컨텐츠를 변경 해줌
+    // 그런대 tag 도 글씨로 인식한다 
+    msg.textContent = '<h1>h1 제목</h1> a  b  c';
+    msg.innerText = '<h1>h1 제목</h1> a  b  c';
+
+    msg.innerHTML = '<h1>h1 제목</h1> a  b  c';
+    // msg.innerHTML ='<script>alert(1) 
+
+    // <div id ="menu" style="color: red;">
+    //   점메추
+    //   </div>
+
+    // creatAttrubute : dom 생성요소
+
+    let div = document.createElement("div") //<div> </div>
+    div.setAttribute('id', 'menu');
+    div.setAttribute('style', 'color: red; font-size: 1.3em;')
+    div.textContent = '메뉴';
+
+    const tag = document.querySelector('#tag');
+
+    // append : 마지막 자식요소로 추가된다
+    //          dom을 넣을 수 있다
+    //          글씨도 넣을 수 있다 (tag 는 text 로 들어간다)
+    tag.append(div)
+    tag.append('글씨')
+    tag.append('<strong>글씨</strong>')
+    // tag.append( msg)
+
+    let div2 = document.createElement("div") //<div> </div>
+    div2.setAttribute('id', 'menu');
+    div2.setAttribute('style', 'color: red; font-size: 1.3em;')
+    div2.textContent = '메뉴2';
+
+    //  appendChild : 마지막 자식 요소로 추가된다 
+    //              : DOM 만 넣을 수있다 (append 와 차이점 )
+    tag.append(div2)
+    // tag.appendChild('글씨')
+
+
+    //  prepend : 첫번 째 로 감  
+    let div3 = document.createElement("div") //<div> </div>
+    div3.setAttribute('id', 'menu');
+    div3.setAttribute('style', 'color: red; font-size: 1.3em;')
+    div3.textContent = '메뉴3';
+    tag.prepend(div3)
+
+
+    //  tag 다음 형제 요소로 추가 
+    tag.after(div3)
+
+    //  tag 이전 형제로 나옴 
+    tag.before(div3)
+
+    const tr = document.createElement('tr')
+    const td = document.createElement('td')
+    td.innerText = '1칸';
+
+    tr.append(td)
+    document.querySelector('#tbody2').append(tr)
+
+    tr.innerHTML = '<td> 1칸 </td>'
+    document.querySelector('#tbody2').append(tr)
+
+    document.querySelector('#tbody2')
+      .innerHTML = '<tr><td> 1칸</td></tr>'
+
+    const row1 = ['제목1', '작성자1']
+    const row2 = ['제목2', '작성자2']
+    const row3 = ['제목3', '작성자3']
+    const row4 = ['제목4', '작성자4']
+    const row5 = ['제목5', '작성자5']
+    const row = [];
+    row.push(row1)
+    row.push(row2)
+    row.push(row3)
+    row.push(row4)
+    row.push(row5)
+
+
+
+    /*
+      < tr >
+      <td>제목1</td>
+      <td>작성자1</td>
+      </tr >
+    */
+    const tbody3 = document.querySelector('#tbody3')
+
+    // for (let i = 0; i < row.length; i++) {
+    //   const html = `
+    //   <tr>
+    //     <td>${row[i][0]}</td>
+    //     <td>${row[i][1]}</td>
+    //   </tr>
+    //   `;
+    //   // tbody3.innerHTML = tbody3.innerHTML + html  
+    //    tbody3.innerHTML += html  
+    // }
+
+    //   let html='';
+
+    //   for (let i = 0; i < row.length; i++) {
+    //    html += `
+    //   <tr>
+    //     <td>${row[i][0]}</td>
+    //     <td>${row[i][1]}</td>
+    //   </tr>
+    //   `;
+    //   // tbody3.innerHTML = tbody3.innerHTML + html  
+    // }
+    // tbody3.innerHTML += html  
+
+    for (let i = 0; i < row.length; i++) {
+      const tr = document.createElement('tr');  
+      tr.innerHTML =`
+              <td>${row[i][0]}</td>
+              <td>${row[i][1]}</td>
+      `;
+        tbody3.append(tr);
+    }
+
+    const h1 = document.getElementById("h1");
+    
+   const script = document.createElement('script')
+    script.innerHTML = alert(1);
+    h1.after( script );
+(
+    function a(){
+      console.log(1111)
+    }
+  )() // 실행의 ()
+    h1.setAttribute('style','background-color: red;');
+
+    h1.style.color='blue';
+
+    //  css 에서 -로 연결되는 프로퍼티 명은
+    //  카멜케이스 (대문자로 연결하는)로 변경하면된다
+    console.log( 'backgroundColor : ',h1.style.backgroundColor )
+    console.log( 'tyoeof height: ',typeof h1.style.height )  // 현재 타입 String 
+    console.log( 'height: ',h1.style.height )   
+
+    h1.style.height = '150px'
+    console.log('height: ', h1.style.height)
+
+    //back ground-color -> backgroundColor
+    h1.setAttribute('style','backgroun-color: blue;')
+    h1.style.backgroundColor ='#ff00ff'
+
+    // 자바스크립트 로 지정한 모든스타일 덮어쓰기
+    h1.style.cssText ='font-size:40px'
+
+   let w =  window.getComputedStyle(h1,null).getPropertyValue("width");
+    console.log('h1.style.width:' ,h1.style.width)
+    console.log('w:',w)
+    h1.style.width = (w - 100)+'px';
+  </script>
+
+
+</body>
+
+</html>
