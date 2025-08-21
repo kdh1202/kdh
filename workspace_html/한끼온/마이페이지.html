@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #imformation {
+            border: 1px solid rgb(180, 179, 179);
+            width: 500px;
+            height: 200px;
+            border-radius: 20px;
+            margin-left:170px;
+        }
+
+        #img {
+            border: 1px solid rgb(180, 179, 179);
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 50px;
+            margin-left: 18px;
+            text-align: center;
+            
+
+        }
+
+        #child {
+            /* border: 1px solid red; */
+            display: inline-block;
+            width: 300px;
+            margin-left: 30px;
+            vertical-align: top;
+            margin-top: 50px;
+        }
+
+        .child1 {
+            margin-top: 10px;
+        }
+
+        .btn {
+            border-radius: 3px;
+            display: inline-block;
+            margin-left: 60px;
+            margin-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: white;
+            
+        }
+
+        .parent {
+            margin-top: 50px;
+            display: inline-block;
+            width: 400px;
+            height: 500px;
+        }
+
+        #mileage-info {
+            border: 1px solid rgb(180, 179, 179);
+            width: 400px;
+            height: 180px;
+            display: inline-block;
+
+        }
+
+        #mileage-history {
+            display: inline-block;
+            border: 1px solid rgb(180, 179, 179);
+            width: 400px;
+            height: 180px;
+        }
+
+        .spen {
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        #spen {
+            display: inline-block;
+            margin-top: 50px;
+        }
+
+        #p2 {
+            display: inline-block;
+            width: 400px;
+            height: 500px;
+            margin-left: 50px;
+            margin-top: 20px;
+            vertical-align: top;
+
+        }
+
+        #activity-history {
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgb(180, 179, 179);
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .p1 {
+            width: 900px;
+            display: inline-block;
+            margin-top: 30px;
+            margin-left: 170px;
+        }
+        .c1{
+            width: 100px;
+            display: inline-block;
+            margin-top: 10px;
+
+        }
+        .c2{
+            width: 50px;
+            display: inline-block;
+            margin-left: 50px;
+        }
+    </style>
+    <script>
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="imformation">
+        <div id="img"></div>
+        <div id="child">
+            <div class="child1"> <span>주소:</span></div>
+            <div class="child1"> <span>특이사항:</span></div>
+            <div class="c1" > <span>관심사:</span></div>
+            <div class="c2"> <span>별명:</span></div>
+            <button type="button" class="btn">수정</button>
+            <button type="button" class="btn">취소</button>
+        </div>
+    </div>
+
+    <div class="p1">
+        <div class="parent">
+            <div class="spen"><span>마일리지 적립 현황</span></div>
+            <div id="mileage-info">
+
+            </div>
+            <div class="spen" id="spen"><span>마일리지 사용 내역</span></div>
+            <div id="mileage-history">
+
+            </div>
+        </div>
+        <div id="p2">
+            <div class="spen"><span>활동 내역</span></div>
+            <div id="activity-history">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

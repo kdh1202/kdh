@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>프로필 정보</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    #imformation {
+      border: 1px solid rgb(180, 179, 179);
+      width: 500px;
+      height: 200px;
+      border-radius: 20px;
+      margin-left: 170px;
+      display: flex;
+      align-items: flex-start;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* 왼쪽 이미지 영역 */
+    #img-box {
+      text-align: center;
+    }
+
+    #img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgb(180, 179, 179);
+      margin-bottom: 8px;
+    }
+
+    #img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    #upload-label {
+      display: inline-block;
+      padding: 4px 10px;
+      background-color: #eee;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    #upload {
+      display: none;
+    }
+
+    /* 오른쪽 텍스트 정보 */
+    #child {
+        margin-top: 8px;
+      margin-left: 30px;
+      flex-grow: 1;
+    }
+
+    .child1 {
+      margin-top: 5px;
+    }
+
+    .c1,
+    .c2 {
+      margin-top: 5px;
+      display: inline-block;
+    }
+
+    .c2 {
+      margin-left: 30px;
+    }
+
+    .btn-wrap {
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 5px 12px;
+      border: 1px solid gray;
+      background-color: white;
+      border-radius: 3px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    /* 아래 마일리지, 활동 내역 섹션 */
+    .p1 {
+      width: 900px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      margin-left: 170px;
+    }
+
+    .parent,
+    #p2 {
+      width: 400px;
+    }
+
+    .spen {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    #mileage-info,
+    #mileage-history,
+    #activity-history {
+      border: 1px solid rgb(180, 179, 179);
+      height: 180px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="imformation">
+    <!-- 왼쪽 사진 영역 -->
+    <div id="img-box">
+      <div id="img">
+        <img id="profileImage" src="" alt="프로필 사진" />
+      </div>
+      <label for="upload" id="upload-label">사진 업로드</label>
+      <input type="file" id="upload" accept="image/*" />
+    </div>
+
+    <!-- 오른쪽 텍스트 정보 + 버튼 -->
+    <div id="child">
+      <div class="child1"><span>주소:</span></div>
+      <div class="child1"><span>특이사항:</span></div>
+      <div class="c1"><span>관심사:</span></div>
+      <div class="c2"><span>별명:</span></div>
+      <div class="btn-wrap">
+        <button type="button" class="btn">수정</button>
+        <button type="button" class="btn">취소</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 마일리지, 활동내역 -->
+  <div class="p1">
+    <div class="parent">
+      <div class="spen">마일리지 적립 현황</div>
+      <div id="mileage-info"></div>
+
+      <div class="spen">마일리지 사용 내역</div>
+      <div id="mileage-history"></div>
+    </div>
+
+    <div id="p2">
+      <div class="spen">활동 내역</div>
+      <div id="activity-history"></div>
+    </div>
+  </div>
+
+  <script>
+    const uploadInput = document.getElementById('upload');
+    const profileImage = document.getElementById('profileImage');
+
+    uploadInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profileImage.src = e.target.result;
+          profileImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+</body>
+</html>

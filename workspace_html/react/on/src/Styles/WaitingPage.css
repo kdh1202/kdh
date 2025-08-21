@@ -1,0 +1,117 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    background-color: #fffaf5;
+    color: #333;
+}
+
+/* 본문 레이아웃 */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    padding: 40px;
+    gap: 40px;
+    min-height: 80vh;
+    background: transparent;
+}
+
+.left,
+.right {
+    border: 1px solid #ddd;
+    padding: 20px;
+    min-height: 100px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+/* 중앙 컨텐츠 박스 */
+.center {
+    text-align: center;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 3px 15px rgba(220, 160, 80, 0.05);
+    padding: 28px 0 30px 0;
+}
+
+/* 모래시계 SVG 바탕 */
+.status-icon {
+    border-radius: 3px;
+    padding: 30px;
+    display: inline-block;
+    margin: 20px 0;
+    background-color: #ffe08c;   /* 연노랑톤: SVG 궤적 색상과 통일감, 원하는 컬러로 변경 */
+}
+
+/* 버튼 스타일 */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+    align-items: center;
+}
+.buttons button {
+    font-size: 20px;
+    border: none;
+    background-color: #fce8d5;  /* 연한 베이지 */
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #e0bda7;
+    border-radius: 8px;
+    padding: 13px 0;
+    width: 180px;
+    transition: transform 0.2s ease, background 0.2s;
+    box-shadow: 0 2px 10px rgba(210, 150, 60, 0.03);
+}
+.buttons button:active {
+    transform: scale(0.95);
+}
+.buttons button:hover {
+    background-color: #ffd7b3;
+}
+
+/* 애니메이션 SVG의 크기만 별도(필요시) */
+.loader {
+    /* --dur은 SVG 애니메이션용 */
+    --dur: 2s;
+    display: block;
+    margin: auto;
+    width: 56px;   /* px로 고정 */
+    height: 56px;
+}
+
+/* 반응형 (태블릿/모바일) */
+@media (max-width: 1100px) {
+    main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 18px;
+    }
+    .left, .right, .center {
+        margin-bottom: 18px;
+    }
+}
+@media (max-width: 600px) {
+    main {
+        padding: 4vw 0.5vw;
+    }
+    .buttons button {
+        width: 100%;
+        min-width: 0;
+        font-size: 17px;
+        padding: 10px 0;
+    }
+}
+
+/*
+----------------------------
+SVG 색상 변경 요약 (참고)
+----------------------------
+  - 바깥 원 stroke: #ffe08c, #ffae00, #d1b58a
+  - 모래/본체: #ffd74b, #ffe4ad, #ffdca7, #ffeaad
+  - 곡선/유리: #e9c17b, #eddca7
+  - status-icon 배경: #ffe08c (연노랑)
+  컬러 포인트를 바꾸고 싶으면 위 HEX값만 변경
+----------------------------
+*/

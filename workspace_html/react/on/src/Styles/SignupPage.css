@@ -1,0 +1,261 @@
+.signup-root-minimal {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding-top: 24px;
+}
+
+.signup-form-minimal {
+  width: 700px !important;
+  max-width: 700px !important;
+  background: #fff;
+  margin: 0 auto;
+  padding: 40px 34px 32px 34px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.signup-title-minimal {
+  font-size: 2.1rem;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 8px;
+  color: #222;
+  letter-spacing: -1px;
+}
+
+.signup-guide-minimal {
+  color: #7c7c7c;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  margin-top: 0;
+  text-align: left;
+  letter-spacing: -0.5px;
+  white-space: nowrap;  /* ★ 한줄 처리 */
+}
+.signup-guide-minimal span {
+  color: #f05a00;
+  font-weight: bold;
+  white-space: nowrap;  /* ★ 별표 줄바꿈 방지 */
+}
+
+.signup-field-minimal {
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+  gap: 20px; /* 라벨/인풋/버튼 간격 넉넉하게 */
+}
+
+.signup-field-minimal label {
+  width: 160px;           /* ★ 라벨 넓게 */
+  min-width: 120px;
+  font-size: 1.09rem;
+  color: #3c3c3c;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  text-align: left;
+  white-space: nowrap;    /* ★ 줄바꿈 방지 */
+  display: flex;
+  align-items: center;
+}
+.signup-field-minimal label span {
+  color: #ff6600;
+  margin-left: 3px;
+  font-size: 1em;
+  white-space: nowrap;
+}
+.signup-field-minimal input {
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
+  padding: 12px 14px;
+  border: 1.1px solid #ffdab9;
+  border-radius: 6px;
+  font-size: 1.09rem;
+  background: #fcfbfa;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+.signup-field-minimal input:focus {
+  border-color: #ffa44c;
+  outline: none;
+}
+.signup-field-minimal.with-btn input {
+  flex: 1 1 62%;
+}
+.signup-field-minimal.with-btn button,
+.signup-field-minimal .id-btn-minimal,
+.signup-field-minimal .addr-btn-minimal {
+  flex: none;
+  min-width: 120px;
+  margin-left: 8px;
+  padding: 10px 0;
+  background: #ffa44c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.07rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+  height: 40px;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signup-field-minimal button:hover {
+  background: #ff9800;
+}
+.signup-field-minimal input#addrDetail {
+  width: 100%;
+}
+
+.rrn-row input {
+  width: 80px;
+  text-align: center;
+  margin-right: 0;
+  padding-right: 0;
+  font-size: 1.09rem;
+}
+.rrn-back-num {
+  width: 20px !important;
+  height: 45px;
+  min-width: 20px !important;
+  max-width: 20px !important;
+  flex: none !important;
+  padding: 0 4px !important;
+  border: 1.1px solid #ffdab9 !important;
+  border-radius: 6px;
+  font-size: 1.09rem;
+  background: #fcfbfa !important;
+  margin-right: 0;
+  box-sizing: border-box !important;
+  box-shadow: none !important;
+  margin-top: 5px;
+  text-align: center;
+}
+/* ↓↓↓ Chrome, Safari, Edge, Opera 스핀버튼 숨기기 */
+.rrn-back-num::-webkit-inner-spin-button,
+.rrn-back-num::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* ↓↓↓ Firefox 스핀버튼 숨기기 */
+.rrn-back-num[type=number] {
+  -moz-appearance: textfield;
+}
+.rrn-back-num:focus{
+  border-color: #ffa44c !important;
+  outline: none;
+}
+.rrn-row .rrn-dash {
+  margin: 0 6px;
+  color: #bbb;
+  font-size: 1.13rem;
+  font-weight: 400;
+}
+.rrn-row .rrn-star {
+  font-size: 1.22rem;
+  color: #c7c2bb;
+  margin-left: -12px;
+  letter-spacing: 2px;
+}
+
+.signup-error-minimal {
+  color: #ef3c2f;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  margin-left: 170px;  /* 라벨 크기에 맞춰서 왼쪽 정렬 */
+  text-align: left;
+}
+
+.signup-check-group-minimal {
+  margin: 20px 0 16px 0;
+  padding: 0;
+  font-size: 1.08rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: none;
+  background: none;
+  width: 100%;     /* 폼 전체 너비 */
+}
+.signup-check-row-minimal {
+  display: flex;
+  align-items: flex-start; /* ★ 체크박스와 글자 윗부분 맞춤 */
+  font-size: 1.07rem;
+  gap: 10px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.signup-check-row-minimal label {
+  flex: 1 1 auto;
+  font-size: 1.06rem;
+  color: #474747;
+  cursor: pointer;
+  font-weight: 400;
+  line-height: 1.6;
+  white-space: nowrap; /* ★ 줄바꿈 방지 */
+  margin-top: -7px;
+}
+.signup-check-row-minimal .check-detail {
+  color: #bb7d2a;
+  margin-left: 6px;
+  font-size: 1.03em;
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.signup-check-row-minimal .check-essential {
+  color: #f05a00;
+  margin-left: 3px;
+  font-size: 1em;
+  white-space: nowrap;
+}
+.signup-check-row-minimal .check-optional {
+  color: #888;
+  margin-left: 3px;
+  font-size: 1em;
+  white-space: nowrap;
+}
+.signup-submit-btn-minimal {
+  width: 100%;
+  margin-top: 18px;
+  background: #ffa44c;
+  color: #fff;
+  border: none;
+  padding: 21px 0;
+  font-size: 1.15rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.15s;
+  letter-spacing: 0.7px;
+  display: block;
+}
+.signup-submit-btn-minimal:hover {
+  background: #ff9800;
+}
+
+.invisible-label {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* 모바일 대응 */
+@media (max-width: 700px) {
+  .signup-form-minimal { width: 97vw; min-width: unset; padding: 6vw 2vw; }
+  .signup-title-minimal { font-size: 1.22rem; }
+  .signup-field-minimal label { width: 84px; font-size: 0.97rem; }
+  .signup-field-minimal input { font-size: 0.99rem; }
+  .signup-submit-btn-minimal { font-size: 0.98rem; }
+}

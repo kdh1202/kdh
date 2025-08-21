@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" href="관리자모드1-1.css">
+</head>
+<body>
+    <header class="support-header">
+        <div class="header-left">
+            <a href="/">
+                <img src="로고.png" alt="한끼온 로고" class="header-logo-img" />
+            </a>
+        </div>
+        <div class="header-nav-wrapper">
+            <nav class="header-nav">
+                <a href="/matching">매칭페이지</a>
+                <a href="/board">게시판</a>
+                <a href="/support">고객지원</a>
+                <a href="/mileage">마일리지 사용처</a>
+                <a href="/warmthmap">온기지도</a>
+                <a href="/admin" class="admin-nav-link">관리자 모드</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="header-login-btn">로그아웃</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="admin-mode">관리자 모드</div>
+            <nav class="side-nav">
+                <ul>
+                    <li class="active"><a href="#">사용자 관리</a></li>
+                    <li><a href="#">문의 내역</a></li>
+                    <li><a href="#">게시글 관리</a></li>
+                    <li><a href="#">시스템설정</a></li>
+                    <li><a href="#">통계</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="content-box">
+                <div class="search-bar">
+                    <label for="search-id">아이디</label>
+                    <input type="text" id="search-id" placeholder="아이디를 입력해주세요.">
+                    <button class="search-btn">검색</button>
+                    <button id="reset-btn" class="reset-btn">초기화</button>
+                    <button id="master-reset-btn" class="master-reset-btn">전체 초기화</button>
+                </div>
+
+                <div id="user-list" class="div-table">
+                    <div class="div-row header">
+                        <div class="div-cell col-id">아이디</div>
+                        <div class="div-cell col-date">가입일</div>
+                        <div class="div-cell col-date">최근접속일</div>
+                        <div class="div-cell col-warnings">경고횟수</div>
+                        <div class="div-cell col-mileage">마일리지</div>
+                        <div class="div-cell col-action"></div>
+                    </div>
+                    <div class="div-body">
+                        <div class="div-row" data-id="ehdgus12" data-role="admin">
+                            <div class="div-cell col-id">ehdgus12</div>
+                            <div class="div-cell col-date">2025.7.31</div>
+                            <div class="div-cell col-date">2025.7.31 19:43</div>
+                            <div class="div-cell col-warnings">4회</div>
+                            <div class="div-cell col-mileage mileage-cell">
+                                <div class="mileage-info">
+                                    <span class="mileage-text">1174p</span>
+                                    <a href="#" class="modify-btn">수정</a>
+                                </div>
+                            </div>
+                            <div class="div-cell col-action">
+                                <div class="sanction-container">
+                                    <button class="sanction-btn">제재</button>
+                                    <div class="sanction-dropdown">
+                                        <a href="#">경고</a><a href="#">1일정지</a><a href="#">7일정지</a><a href="#">계정삭제</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-row" data-id="dmdud1">
+                            <div class="div-cell col-id">dmdud1</div>
+                            <div class="div-cell col-date">2025.8.21</div>
+                            <div class="div-cell col-date">2025.7.31 19:43</div>
+                            <div class="div-cell col-warnings">1회</div>
+                            <div class="div-cell col-mileage mileage-cell">
+                                <div class="mileage-info">
+                                    <span class="mileage-text">7724p</span>
+                                    <a href="#" class="modify-btn">수정</a>
+                                </div>
+                            </div>
+                            <div class="div-cell col-action">
+                                <div class="sanction-container">
+                                    <button class="sanction-btn">제재</button>
+                                    <div class="sanction-dropdown">
+                                        <a href="#">경고</a><a href="#">1일정지</a><a href="#">7일정지</a><a href="#">계정삭제</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-row" data-id="wowon777">
+                            <div class="div-cell col-id">wowon777</div>
+                            <div class="div-cell col-date">2025.8.21</div>
+                            <div class="div-cell col-date">2025.7.31 19:43</div>
+                            <div class="div-cell col-warnings">3회</div>
+                            <div class="div-cell col-mileage mileage-cell">
+                                <div class="mileage-info">
+                                    <span class="mileage-text">447p</span>
+                                    <a href="#" class="modify-btn">수정</a>
+                                </div>
+                            </div>
+                            <div class="div-cell col-action">
+                                <div class="sanction-container">
+                                    <button class="sanction-btn">제재</button>
+                                    <div class="sanction-dropdown">
+                                        <a href="#">경고</a><a href="#">1일정지</a><a href="#">7일정지</a><a href="#">계정삭제</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-row" data-id="woghd_123">
+                            <div class="div-cell col-id">woghd_123</div>
+                            <div class="div-cell col-date">2025.8.21</div>
+                            <div class="div-cell col-date">2025.7.31 19:43</div>
+                            <div class="div-cell col-warnings">11회</div>
+                            <div class="div-cell col-mileage mileage-cell">
+                                <div class="mileage-info">
+                                    <span class="mileage-text">1244p</span>
+                                    <a href="#" class="modify-btn">수정</a>
+                                </div>
+                            </div>
+                            <div class="div-cell col-action">
+                                <div class="sanction-container">
+                                    <button class="sanction-btn">제재</button>
+                                    <div class="sanction-dropdown">
+                                        <a href="#">경고</a><a href="#">1일정지</a><a href="#">7일정지</a><a href="#">계정삭제</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="request-header">
+                    <h3>요청 대기자</h3>
+                    <div class="filter-container">
+                        <button class="filter-btn">필터</button>
+                        <div class="filter-dropdown">
+                            <a href="#">전체 보기</a>
+                            <a href="#">현재진행중</a>
+                            <a href="#">종료 목록</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="request-list" class="div-table">
+                    <div class="div-row header">
+                        <div class="div-cell col-req-id">아이디</div>
+                        <div class="div-cell col-req-content">요청내용</div>
+                        <div class="div-cell col-req-time">작성시간</div>
+                        <div class="div-cell col-req-status">상태</div>
+                    </div>
+                    <div class="div-body">
+                        <div class="div-row" data-author-id="ehdgus12">
+                            <div class="div-cell col-req-id">ehdgus12</div>
+                            <div class="div-cell col-req-content left-align request-content-cell">병원에 가고 싶습니다.</div>
+                            <div class="div-cell col-req-time">2025.7.31 19:43</div>
+                            <div class="div-cell col-req-status">
+                                <span class="status-progress">진행중</span>
+                            </div>
+                        </div>
+                        <div class="div-row" data-author-id="woghd_123">
+                            <div class="div-cell col-req-id">woghd_123</div>
+                            <div class="div-cell col-req-content left-align request-content-cell">말동무가 필요해요!</div>
+                            <div class="div-cell col-req-time">2025.7.31 19:44</div>
+                            <div class="div-cell col-req-status">
+                                <span class="status-completed">종료</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <a href="#" class="disabled">&lt;</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#" class="disabled">&gt;</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="request-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>요청 상세 내용</h2>
+            <div id="modal-request-text"></div>
+        </div>
+    </div>
+
+    <script src="관리자모드1-1.js"></script>
+</body>
+</html>

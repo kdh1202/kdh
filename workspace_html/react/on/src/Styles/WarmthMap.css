@@ -1,0 +1,15 @@
+/* WarmthMap.css */
+
+.warmthmap-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px; /* 헤더와의 간격 */
+}
+
+.warmthmap-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 22px;
+  text-align: center;
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>프로필 정보</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    #imformation {
+      border: 1px solid rgb(180, 179, 179);
+      width: 500px;
+      height: 200px;
+      border-radius: 20px;
+      margin-left: 170px;
+      display: flex;
+      align-items: flex-start;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* 왼쪽 이미지 영역 */
+    #img-box {
+      text-align: center;
+    }
+
+    #upload-label {
+      display: none; /* 기본 숨김 */
+      padding: 4px 10px;
+      background-color: #eee;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      display: inline-block;
+      position: relative;
+      top: -10px; /* 사진 위로 10px 올림 */
+    }
+
+    #upload {
+      display: none; /* 파일 선택 input 숨김 유지 */
+    }
+
+    #img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgb(180, 179, 179);
+      margin-bottom: 8px;
+    }
+
+    #img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 오른쪽 텍스트 정보 */
+    #child {
+      margin-top: 8px;
+      margin-left: 30px;
+      flex-grow: 1;
+    }
+
+    .child1 {
+      margin-top: 5px;
+    }
+
+    .c1,
+    .c2 {
+      margin-top: 5px;
+      display: inline-block;
+    }
+
+    .c2 {
+      margin-left: 30px;
+    }
+
+    .btn-wrap {
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 5px 12px;
+      border: 1px solid gray;
+      background-color: white;
+      border-radius: 3px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    /* 아래 마일리지, 활동 내역 섹션 */
+    .p1 {
+      width: 900px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      margin-left: 170px;
+    }
+
+    .parent,
+    #p2 {
+      width: 400px;
+    }
+
+    .spen {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    #mileage-info,
+    #mileage-history,
+    #activity-history {
+      border: 1px solid rgb(180, 179, 179);
+      height: 180px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="imformation">
+    <!-- 왼쪽 사진 영역 -->
+    <div id="img-box">
+      <label for="upload" id="upload-label">사진 업로드</label>
+      <div id="img">
+        <img id="profileImage" src="https://via.placeholder.com/100" alt="프로필 사진" />
+      </div>
+      <input type="file" id="upload" accept="image/*" />
+    </div>
+
+    <!-- 오른쪽 텍스트 정보 + 버튼 -->
+    <div id="child">
+      <div class="child1"><span>주소:</span> 서울시 강남구</div>
+      <div class="child1"><span>특이사항:</span> 없음</div>
+      <div class="c1"><span>관심사:</span> 운동</div>
+      <div class="c2"><span>별명:</span> 동현이</div>
+
+      <div class="btn-wrap">
+        <button type="button" class="btn" id="editBtn">수정</button>
+        <button type="button" class="btn" id="confirmBtn" style="display:none;">확인</button>
+        <button type="button" class="btn" id="cancelBtn" style="display:none;">취소</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 마일리지, 활동내역 -->
+  <div class="p1">
+    <div class="parent">
+      <div class="spen">마일리지 적립 현황</div>
+      <div id="mileage-info"></div>
+
+      <div class="spen">마일리지 사용 내역</div>
+      <div id="mileage-history"></div>
+    </div>
+
+    <div id="p2">
+      <div class="spen">활동 내역</div>
+      <div id="activity-history"></div>
+    </div>
+  </div>
+
+  <script>
+    const uploadInput = document.getElementById('upload');
+    const profileImage = document.getElementById('profileImage');
+    const uploadLabel = document.getElementById('upload-label');
+    const editBtn = document.getElementById('editBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+
+    let originalImageSrc = profileImage.src;  // 원본 이미지 저장
+    let tempImageSrc = null;                   // 변경 임시 저장
+
+    // 이미지 업로드 시 임시 저장 및 화면 반영
+    uploadInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          tempImageSrc = e.target.result;
+          profileImage.src = tempImageSrc;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    editBtn.addEventListener('click', () => {
+      // 수정 누르면 업로드 보이고 버튼 변경
+      uploadLabel.style.display = 'inline-block';
+      uploadInput.style.display = 'block';
+
+      editBtn.style.display = 'none';
+      confirmBtn.style.display = 'inline-block';
+      cancelBtn.style.display = 'inline-block';
+
+      // 원본 이미지 백업
+      originalImageSrc = profileImage.src;
+      tempImageSrc = null; // 초기화
+    });
+
+    confirmBtn.addEventListener('click', () => {
+      // 확인 누르면 업로드 숨기고 버튼 복귀
+      uploadLabel.style.display = 'none';
+      uploadInput.style.display = 'none';
+
+      editBtn.style.display = 'inline-block';
+      confirmBtn.style.display = 'none';
+      cancelBtn.style.display = 'none';
+
+      // 변경 확정, tempImageSrc가 있으면 원본 교체
+      if (tempImageSrc) {
+        originalImageSrc = tempImageSrc;
+        tempImageSrc = null;
+      }
+
+      // 업로드 input 초기화
+      uploadInput.value = '';
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      // 취소 누르면 원본 이미지 복구, 업로드 숨기고 버튼 복귀
+      profileImage.src = originalImageSrc;
+
+      uploadLabel.style.display = 'none';
+      uploadInput.style.display = 'none';
+
+      editBtn.style.display = 'inline-block';
+      confirmBtn.style.display = 'none';
+      cancelBtn.style.display = 'none';
+
+      uploadInput.value = '';
+      tempImageSrc = null;
+    });
+
+    // 초기 프로필 사진 보이기
+    window.onload = () => {
+      profileImage.style.display = 'block';
+    };
+  </script>
+
+</body>
+</html>

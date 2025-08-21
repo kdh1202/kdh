@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 통계</title>
+    <link rel="stylesheet" href="관리자1-5.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header class="admin5-support-header">
+        <div class="admin5-header-left">
+            <a href="/">
+                <img src="logo.png" alt="한끼온 로고" class="admin5-header-logo-img" />
+            </a>
+        </div>
+        <div class="admin5-header-nav-wrapper">
+            <nav class="admin5-header-nav">
+                <a href="/matching">매칭페이지</a>
+                <a href="/board">게시판</a>
+                <a href="/support">고객지원</a>
+                <a href="/mileage">마일리지 사용처</a>
+                <a href="/warmthmap">온기지도</a>
+                <a href="/admin" class="admin5-admin-nav-link">관리자 모드</a>
+            </nav>
+        </div>
+        <div class="admin5-header-right">
+            <button class="admin5-header-login-btn">로그아웃</button>
+        </div>
+    </header>
+    <div class="admin5-main-container">
+        <aside class="admin5-sidebar">
+            <div class="admin5-admin-mode">관리자 모드</div>
+            <nav class="admin5-side-nav">
+                <ul>
+                    <li><a href="#">사용자 관리</a></li>
+                    <li><a href="#">문의 내역</a></li>
+                    <li><a href="#">게시글 관리</a></li>
+                    <li><a href="#">시스템설정</a></li>
+                    <li class="admin5-active"><a href="#">통계</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="admin5-content">
+            <div class="admin5-content-box">
+                <div class="admin5-chart-header">
+                    <div class="admin5-dropdown">
+                        <button class="admin5-dropdown-btn">평균 매칭 횟수 ▼</button>
+                        <div class="admin5-dropdown-menu">
+                            <a href="#" data-view="totalMatches">전체 매칭 횟수</a>
+                            <a href="#" data-view="avgConnectTime">평균 접속 시간</a>
+                            <a href="#" data-view="matchCount">매칭 성공/실패 횟수</a>
+                            <a href="#" data-view="avgMatchSuccessTime">평균 매칭 성공 시간</a>
+                            <a href="#" data-view="userRatio">도움요청자/제공자 비율</a>
+                        </div>
+                    </div>
+                    <div class="admin5-dropdown" id="admin5-date-dropdown">
+                        <button class="admin5-dropdown-btn">주 ▼</button>
+                        <div class="admin5-dropdown-menu">
+                            <a href="#" data-period="day">일</a>
+                            <a href="#" data-period="week">주</a>
+                            <a href="#" data-period="month">월</a>
+                            <a href="#" data-period="year">년</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="admin5-chart-placeholder" id="admin5-bar-chart-area">
+                    <canvas id="myBarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="admin5-content-box">
+                <div class="admin5-chart-header">
+                    <div class="admin5-dropdown">
+                        <button class="admin5-dropdown-btn">전체 매칭 횟수 ▼</button>
+                        <div class="admin5-dropdown-menu">
+                            <a href="#" data-view="totalMatches">전체 매칭 횟수</a>
+                            <a href="#" data-view="avgConnectTime">평균 접속 시간</a>
+                            <a href="#" data-view="matchCount">매칭 성공/실패 횟수</a>
+                            <a href="#" data-view="avgMatchSuccessTime">평균 매칭 성공 시간</a>
+                            <a href="#" data-view="userRatio">도움요청자/제공자 비율</a>
+                        </div>
+                    </div>
+                    <div class="admin5-dropdown" id="admin5-date-dropdown">
+                        <button class="admin5-dropdown-btn">주 ▼</button>
+                        <div class="admin5-dropdown-menu">
+                            <a href="#" data-period="day">일</a>
+                            <a href="#" data-period="week">주</a>
+                            <a href="#" data-period="month">월</a>
+                            <a href="#" data-period="year">년</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="admin5-pie-chart-layout">
+                    <div class="admin5-chart-placeholder" id="admin5-pie-chart-area">
+                        Pie Chart Area
+                    </div>
+                    <div class="admin5-ranked-list">
+                        <div class="admin5-rank-item">
+                            <span class="admin5-rank-num">1</span>
+                            <span class="admin5-rank-label">시간 착각</span>
+                            <div class="admin5-rank-bar-bg">
+                                <div class="admin5-rank-bar" style="width: 34%;"></div>
+                            </div>
+                            <span class="admin5-rank-percent">34.0%</span>
+                            <span class="admin5-rank-count">74회</span>
+                        </div>
+                        <div class="admin5-rank-item">
+                            <span class="admin5-rank-num">2</span>
+                            <span class="admin5-rank-label">불친절</span>
+                            <div class="admin5-rank-bar-bg">
+                                <div class="admin5-rank-bar" style="width: 32%;"></div>
+                            </div>
+                            <span class="admin5-rank-percent">32.0%</span>
+                            <span class="admin5-rank-count">67회</span>
+                        </div>
+                        <div class="admin5-rank-item">
+                            <span class="admin5-rank-num">3</span>
+                            <span class="admin5-rank-label">위치 실수</span>
+                            <div class="admin5-rank-bar-bg">
+                                <div class="admin5-rank-bar" style="width: 18%;"></div>
+                            </div>
+                            <span class="admin5-rank-percent">18.0%</span>
+                            <span class="admin5-rank-count">44회</span>
+                        </div>
+                        <div class="admin5-rank-item">
+                            <span class="admin5-rank-num">4</span>
+                            <span class="admin5-rank-label">요구 변경</span>
+                            <div class="admin5-rank-bar-bg">
+                                <div class="admin5-rank-bar" style="width: 16%;"></div>
+                            </div>
+                            <span class="admin5-rank-percent">16.0%</span>
+                            <span class="admin5-rank-count">34회</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="관리자1-5.js"></script>
+</body>
+
+</html>

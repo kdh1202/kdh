@@ -1,0 +1,520 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 5px 10px;
+}
+
+/* --- 헤더 스타일 --- */
+.support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fcead5;
+    padding: 10px 32px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.header-logo-img {
+    width: 180px;
+    height: auto;
+}
+
+.header-nav-wrapper {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    gap: 40px;
+}
+
+.header-nav a {
+    color: #222;
+    padding: 0 18px;
+    font-weight: 600;
+    position: relative;
+    white-space: nowrap;
+}
+
+.header-nav a:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background-color: #bbb;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-login-btn {
+    background: #ff9800;
+    color: #fff;
+    border: 1.5px solid #ff9800;
+    border-radius: 7px;
+    padding: 5px 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 92px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.header-login-btn:hover,
+.header-login-btn:focus {
+    background: #ff7b00;
+    color: #fff;
+    border-color: #ff9800;
+}
+
+.admin-nav-link {
+    background-color: #d9534f;
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.admin-nav-link::after {
+    display: none !important;
+}
+
+.header-nav a[href="/warmthmap"]::after {
+    content: '';
+}
+
+/* --- 헤더 반응형 디자인 --- */
+@media (max-width: 1024px) {
+    .support-header {
+        padding: 12px 16px;
+    }
+
+    .header-nav {
+        gap: 20px;
+        font-size: 1rem;
+    }
+
+    .header-nav a {
+        padding: 0 10px;
+    }
+
+    .header-nav a:not(:last-child)::after {
+        right: -10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .support-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header-nav-wrapper {
+        order: 1;
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .header-nav {
+        font-size: 1rem;
+        padding-bottom: 5px;
+    }
+
+    .header-nav a:not(:last-child)::after {
+        display: none;
+    }
+
+    .header-right {
+        position: absolute;
+        top: 20px;
+        right: 16px;
+    }
+}
+
+/* --- 관리자 페이지 스타일 --- */
+.main-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    height: calc(100vh - 72px);
+    flex-shrink: 0;
+}
+
+.admin-mode {
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 7px black;
+}
+
+.side-nav ul {
+    list-style: none;
+}
+
+.side-nav li a {
+    display: block;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.side-nav li.active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.content-box {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar label {
+    font-weight: bold;
+    margin-right: 10px;
+    background-color: #f0f0f0;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.search-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 9px 20px;
+    margin-left: 5px;
+}
+
+.reset-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 9px 20px;
+    margin-left: 5px;
+}
+
+/* 💡 [수정] 전체 초기화 버튼 스타일 추가 */
+.master-reset-btn {
+    background-color: #d9534f;
+    /* 빨간색 계열 */
+    color: white;
+    border: none;
+    padding: 9px 20px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.div-table .header {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #ccc;
+}
+
+.div-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+.div-cell {
+    text-align: center;
+    padding: 0 5px;
+}
+
+.div-cell:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+
+.col-id {
+    flex: 0 0 120px;
+}
+
+.col-date {
+    flex: 1 1 160px;
+    min-width: 160px;
+}
+
+.col-warnings {
+    flex: 0 0 80px;
+}
+
+.col-mileage {
+    flex: 1 1 220px;
+    min-width: 220px;
+}
+
+.col-action {
+    flex: 0 0 100px;
+}
+
+.col-req-id {
+    flex: 0 0 120px;
+}
+
+.col-req-content {
+    flex: 1 1 auto;
+}
+
+.col-req-time {
+    flex: 0 0 150px;
+}
+
+.col-req-status {
+    flex: 0 0 80px;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.request-content-cell {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #2980b9;
+}
+
+.request-content-cell:hover {
+    font-weight: bold;
+}
+
+.status-progress {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.status-completed {
+    color: #7f8c8d;
+}
+
+.mileage-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 50px;
+}
+
+.mileage-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.mileage-cell .modify-btn {
+    color: #333;
+    font-weight: normal;
+    border: 1px solid #ccc;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    margin-left: 8px;
+    background: #fff;
+}
+
+.sanction-btn {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 6px 15px;
+    font-weight: bold;
+    box-shadow: 0px 0px 2px;
+}
+
+.sanction-container {
+    position: relative;
+    display: inline-block;
+}
+
+.sanction-dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    min-width: 100px;
+    z-index: 1;
+    right: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sanction-dropdown a {
+    display: block;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.sanction-dropdown a:hover {
+    background-color: #f0f0f0;
+}
+
+.request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.filter-container {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    min-width: 120px;
+    z-index: 1;
+    right: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filter-dropdown a {
+    display: block;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.filter-dropdown a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    margin: 0 2px;
+    background-color: #fff;
+}
+
+.pagination a.active {
+    background-color: #333;
+    color: white;
+    border-color: #333;
+    font-weight: bold;
+}
+
+.pagination a.disabled {
+    background-color: #f9f9f9;
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.modal-content #modal-request-text {
+    font-size: 1.1em;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #333;
+}

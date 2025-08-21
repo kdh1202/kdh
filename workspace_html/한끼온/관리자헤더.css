@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    background-color: #f4f4f4;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+button {
+    cursor: pointer;
+}
+
+/* --- 헤더 스타일 --- */
+.support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fcead5;
+    padding: 10px 32px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.header-logo-img {
+    width: 180px;
+    height: auto;
+}
+.header-nav-wrapper {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+.header-nav {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    gap: 40px;
+}
+.header-nav a {
+    color: #222;
+    padding: 0 18px;
+    font-weight: 600;
+    position: relative;
+    white-space: nowrap;
+}
+.header-nav a:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background-color: #bbb;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.header-login-btn {
+    background: #ff9800;
+    color: #fff;
+    border: 1.5px solid #ff9800;
+    border-radius: 7px;
+    padding: 5px 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 92px;
+    height: 36px;
+}
+.header-login-btn:hover,
+.header-login-btn:focus {
+    background: #ff7b00;
+    color: #fff;
+    border-color: #ff9800;
+}
+.admin-nav-link {
+    background-color: #d9534f;
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.admin-nav-link::after {
+    display: none !important;
+}
+.header-nav a[href="/warmthmap"]::after {
+    content: '';
+}
+
+/* --- 헤더 반응형 디자인 --- */
+@media (max-width: 1024px) {
+    .support-header { padding: 12px 16px; }
+    .header-nav { gap: 20px; font-size: 1rem; }
+    .header-nav a { padding: 0 10px; }
+    .header-nav a:not(:last-child)::after { right: -10px; }
+}
+@media (max-width: 768px) {
+    .support-header { flex-direction: column; gap: 15px; }
+    .header-nav-wrapper { order: 1; width: 100%; overflow-x: auto; justify-content: flex-start; }
+    .header-nav { font-size: 1rem; padding-bottom: 5px; }
+    .header-nav a:not(:last-child)::after { display: none; }
+    .header-right { position: absolute; top: 20px; right: 16px; }
+}

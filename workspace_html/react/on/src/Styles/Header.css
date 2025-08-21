@@ -1,0 +1,155 @@
+.support-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fcead5;
+  padding: 12px 32px;
+  font-family: 'Noto Sans KR', sans-serif;
+  min-width: 300px;
+}
+
+.header-logo-img {
+  width: 220px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.header-nav-wrapper {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  position: relative;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.3rem;
+  gap: 54px;
+  position: relative;
+}
+
+.header-nav a {
+  color: #222;
+  text-decoration: none;
+  padding: 0 22px;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.5px;
+}
+.header-nav a:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -25%;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 18px;
+  background-color: #bbb;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.mypage-link {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #222;
+  text-decoration: none;
+}
+.header-login-btn {
+  background: #ff9800;
+  color: #fff;
+  border: 1.5px solid #ff9800;
+  border-radius: 7px;
+  padding: 5px 16px;
+  font-weight: 700;
+  font-size: 1.07rem;
+  min-width: 92px;
+  height: 36px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  outline: none;
+}
+.header-login-btn:hover,
+.header-login-btn:focus {
+  background: #ff7b00;
+  color: #fff;
+  border-color: #ff9800;
+}
+
+/* --------------- 반응형 --------------- */
+@media (max-width: 820px) {
+  .support-header {
+    padding: 8px 10px;
+  }
+  .header-logo-img {
+    width: 120px;
+    height: 34px;
+  }
+  .header-nav {
+    font-size: 1.04rem;
+    gap: 26px;
+  }
+  .header-nav a {
+    padding: 0 9px;
+  }
+  .header-nav a:not(:last-child)::after {
+    height: 13px;
+    right: -18%;
+  }
+  .header-right {
+    gap: 10px;
+  }
+  .header-login-btn {
+    min-width: 60px;
+    height: 28px;
+    font-size: 0.91rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .mypage-link {
+    font-size: 0.92rem;
+  }
+}
+@media (max-width: 389px) {
+  .support-header {
+    padding: 2px 2vw;
+  }
+  .header-logo-img {
+    width: 75px;
+    height: 19px;
+  }
+  .header-nav {
+    gap: 9px;
+    font-size: 0.83rem;
+  }
+  .header-nav a {
+    padding: 0 2px;
+    font-size: 0.82rem;
+  }
+  .header-nav a:not(:last-child)::after {
+    height: 7px;
+    right: -8%;
+  }
+  .header-right {
+    gap: 2px;
+  }
+  .header-login-btn {
+    min-width: 36px;
+    height: 18px;
+    font-size: 0.67rem;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  .mypage-link {
+    font-size: 0.74rem;
+  }
+}

@@ -1,0 +1,240 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 5px 10px;
+}
+
+/* --- 공통 헤더 스타일 --- */
+.admin5-support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fcead5;
+    padding: 10px 32px;
+}
+.admin5-header-logo-img {
+    width: 180px;
+    height: auto;
+}
+.admin5-header-nav-wrapper {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.admin5-header-nav {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    gap: 40px;
+}
+.admin5-header-nav a {
+    color: #222;
+    padding: 0 18px;
+    font-weight: 600;
+}
+.admin5-header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.admin5-header-login-btn {
+    background: #ff9800;
+    color: #fff;
+    border: 1.5px solid #ff9800;
+    border-radius: 7px;
+    padding: 5px 16px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.admin5-admin-nav-link {
+    background-color: #d9534f;
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* --- 공통 관리자 페이지 스타일 --- */
+.admin5-main-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.admin5-sidebar {
+    width: 220px;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    height: calc(100vh - 72px);
+    flex-shrink: 0;
+}
+.admin5-admin-mode {
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 7px black;
+}
+.admin5-side-nav ul {
+    list-style: none;
+}
+.admin5-side-nav li a {
+    display: block;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.admin5-side-nav li.admin5-active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+.admin5-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* --- 통계 페이지 콘텐츠 스타일 --- */
+.admin5-content-box {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+.admin5-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* ▼ 드롭다운 관련 스타일 ▼ */
+.admin5-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.admin5-dropdown-btn {
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #333; /* 버튼 스타일 수정 */
+    color: white;
+    padding: 8px 20px;
+    border: 1px solid #000;
+    width: 160px;
+    text-align: left;
+}
+.admin5-dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #2d2d2d;
+    min-width: 160px;
+    border: 1px solid #000;
+    z-index: 1;
+}
+.admin5-dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    white-space: nowrap;
+    border-top: 1px solid #555;
+}
+.admin5-dropdown-menu a:hover {
+    background-color: #555;
+}
+.admin5-dropdown-menu.show {
+    display: block;
+}
+/* ▲ 드롭다운 관련 스타일 ▲ */
+
+.admin5-date-filter .admin5-date-btn {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 5px 15px;
+}
+.admin5-date-filter .admin5-date-btn.admin5-active {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+.admin5-chart-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    background-color: #f9f9f9;
+    border: 1px dashed #ccc;
+    color: #999;
+    font-size: 20px;
+    font-weight: bold;
+}
+.admin5-pie-chart-layout {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#admin5-pie-chart-area {
+    flex: 1;
+}
+.admin5-ranked-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.admin5-rank-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.admin5-rank-num {
+    font-weight: bold;
+    width: 20px;
+}
+.admin5-rank-label {
+    width: 70px;
+}
+.admin5-rank-bar-bg {
+    flex-grow: 1;
+    background-color: #e0e0e0;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.admin5-rank-bar {
+    height: 100%;
+    background-color: #ff9800;
+}
+.admin5-rank-percent {
+    width: 50px;
+    font-weight: bold;
+    text-align: right;
+}
+.admin5-rank-count {
+    width: 50px;
+    color: #666;
+    text-align: right;
+}

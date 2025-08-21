@@ -1,0 +1,146 @@
+.comm-board {
+  width: 100%;
+  background: #fff;
+  border-radius: 13px;
+  padding: 18px 24px 30px 24px;
+  box-shadow: 0 2px 18px #f2e0cb1a;
+  margin-bottom: 20px;
+}
+
+.comm-board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.comm-board-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #353948;
+  margin: 0;
+}
+
+.comm-write-btn {
+  background: #fde6d4;
+  border: 1.2px solid #f8c188;
+  border-radius: 8px;
+  font-size: 1.07rem;
+  padding: 7px 19px;
+  color: #e87e1d;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.13s, border 0.13s;
+}
+.comm-write-btn:hover {
+  background: #ffd6a1;
+  border-color: #ecb363;
+}
+
+/* 테이블 */
+.comm-board-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 1.04rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0.5px 2px #e1cdb42e;
+}
+.comm-board-table th, .comm-board-table td {
+  border: 1px solid #faedcd;
+  padding: 13px 0;
+  text-align: center;
+}
+.comm-board-table th {
+  background: #fff7ed;
+  color: #955a14;
+  font-weight: 700;
+  font-size: 1.04rem;
+  letter-spacing: 0.01em;
+}
+.comm-board-table td {
+  color: #34323e;
+}
+.comm-board-table tr {
+  transition: background 0.14s;
+}
+.comm-board-table tr:hover {
+  background: #fff8ee;
+}
+.comm-board-title-btn {
+  all: unset;
+  cursor: pointer;
+  color: #222;                    /* 항상 검정색 */
+  font-weight: 500;
+  font-size: 1.08rem;
+  text-align: left;
+  text-decoration: none;          /* 기본 밑줄 제거 */
+  transition: color 0.14s;
+  /* 필요시 padding 등 추가 */
+}
+.comm-board-title-btn:hover {
+  color: #e6782c;
+  text-decoration: underline;
+   text-underline-offset: 4px;
+}
+.comm-board-empty {
+  text-align: center;
+  color: #aaa;
+  background: #fff8ee;
+  font-size: 1.05rem;
+  height: 54px;
+}
+.comm-board-notice-row {
+  background: #fff8d9 !important;
+  color: #de751b;
+  font-weight: 600;
+}
+/* 태블릿 이하 */
+@media (max-width: 820px) {
+  .comm-board {
+    padding: 13px 10px 20px 10px;
+  }
+  .comm-board-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .comm-board-title {
+    font-size: 1.4rem;
+  }
+  .comm-write-btn {
+    font-size: 0.97rem;
+    padding: 6px 13px;
+  }
+  .comm-board-table th, .comm-board-table td {
+    padding: 8px 0;
+    font-size: 0.98rem;
+  }
+}
+
+/* 극단적 모바일 */
+@media (max-width: 389px) {
+  .comm-board {
+    padding: 6px 2vw 13px 2vw;
+    border-radius: 8px;
+  }
+  .comm-board-title {
+    font-size: 1.08rem;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .comm-write-btn {
+    font-size: 0.83rem;
+    padding: 4px 7px;
+    border-radius: 6px;
+  }
+  .comm-board-header {
+    gap: 4px;
+  }
+  .comm-board-table th, .comm-board-table td {
+    font-size: 0.88rem;
+    padding: 5px 0;
+  }
+}
